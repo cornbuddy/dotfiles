@@ -22,10 +22,18 @@ in
   environment.systemPackages = with pkgs; [
     # development
     unstable.neovim
+    unstable.tree-sitter
     unstable.moon
+    unstable.buck2
+    unstable.bazel_7
     unstable.cargo
+    unstable.clippy
     unstable.rustc
     unstable.go
+    unstable.delve
+    unstable.tflint
+    pkgs.bundler
+    pkgs.ruby
     pkgs.rustfmt
     pkgs.gcc
     pkgs.gnumake
