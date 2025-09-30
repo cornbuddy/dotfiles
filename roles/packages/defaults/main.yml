@@ -16,7 +16,6 @@ packages_extra: []
 packages_snap_extra: []
 packages_pip_extra: []
 packages_apt_repositories:
-  - ppa:ansible/ansible
   - >-
     deb [arch={{ packages_arch }}]
     https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main
@@ -54,7 +53,7 @@ packages_docker_repo: >-
   {{ ansible_distribution_release }} stable
 
 packages_install_terragrunt: false
-packages_terragrunt_version: v0.58.13
+packages_terragrunt_version: v0.88.1
 
 packages_install_kops: false
 packages_kops_version: v1.28.0

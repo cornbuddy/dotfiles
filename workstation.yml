@@ -32,21 +32,6 @@
       become: true
 
   roles:
-    - role: alacritty
-      tags: alacritty
-    - role: fish
-      tags: fish
-    - role: hyprland
-      tags: hyprland
-      when: ansible_distribution != 'MacOSX'
-    - role: neovim
-      tags: neovim
-    - role: tmux
-      tags: tmux
-    - role: user
-      vars:
-        user_name: cornbuddy
-      when: ansible_distribution == 'Ubuntu'
     - role: packages
       tags: packages
       vars:
@@ -71,4 +56,16 @@
             classic: false
           - name: terraform
             classic: true
+      when: ansible_distribution == 'Ubuntu'
+    - role: alacritty
+      tags: alacritty
+    - role: fish
+      tags: fish
+    - role: neovim
+      tags: neovim
+    - role: tmux
+      tags: tmux
+    - role: user
+      vars:
+        user_name: cornbuddy
       when: ansible_distribution == 'Ubuntu'

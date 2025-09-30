@@ -1,5 +1,5 @@
 ---
-fish_ppa_repo: ppa:fish-shell/release-3
+fish_ppa_repo: ppa:fish-shell/release-4
 fish_packages:
   - fish
 
