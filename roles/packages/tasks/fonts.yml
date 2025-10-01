@@ -1,0 +1,16 @@
+---
+
+- name: Checkout fonts repo
+  ansible.builtin.git:
+    dest: /tmp/fontawesome
+    repo: "{{ packages_fonts_url }}"
+    version: master
+    depth: 1
+
+- name: Install fonts
+  ansible.builtin.shell: ./install.sh
+  args:
+    chdir: /tmp/fontawesome
+    executable: /bin/bash
+  notify:
+    - Update font cache

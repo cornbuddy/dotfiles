@@ -39,6 +39,7 @@
         packages_install_node_js: true
         packages_install_terragrunt: true
         packages_install_docker: true
+        packages_install_fonts: true
         packages_extra:
           - xsel
           - ansible

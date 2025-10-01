@@ -87,3 +87,7 @@
 - name: Install kops
   ansible.builtin.import_tasks: kops.yml
   when: packages_install_kops | bool
+
+- name: Install fonts
+  ansible.builtin.import_tasks: fonts.yml
+  when: packages_install_fonts | bool
