@@ -43,7 +43,6 @@
         packages_extra:
           - xsel
           - ansible
-          - packer
           - wireguard
           - openjdk-21-jdk
         packages_pip_extra:
@@ -67,6 +66,7 @@
     - role: tmux
       tags: tmux
     - role: user
+      tags: user
       vars:
         user_name: cornbuddy
       when: ansible_distribution == 'Ubuntu'

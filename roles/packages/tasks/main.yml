@@ -5,12 +5,14 @@
     url: "{{ packages_packer_apt_gpg_key }}"
     dest: "{{ packages_packer_apt_gpg_path }}"
   become: true
+  when: packages_packer_install | bool
 
 - name: Add apt repositories
   ansible.builtin.apt_repository:
     repo: "{{ item }}"
   loop: "{{ packages_apt_repositories }}"
   become: true
+  when: packages_packer_install | bool
 
 - name: Upgrade all apt packages
   ansible.builtin.apt:

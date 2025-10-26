@@ -1,7 +1,12 @@
 ---
 user_primary_group: users
 user_group_id: "{{ omit }}"
-user_secondary_groups: []
+user_secondary_groups:
+  - networkmanager
+  - wheel
+  - input
+  - docker
+  - audio
 user_name: "{{ ansible_env.USER }}"
 user_id: "{{ omit }}"
 user_home: "{{ omit }}"

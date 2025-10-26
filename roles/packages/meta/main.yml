@@ -12,5 +12,7 @@ dependencies:
   - role: gantsign.golang
     when: packages_install_go
     vars:
+      golang_version: 1.25.3
+      golang_redis_sha256sum: 0335f314b6e7bfe08c3d0cfaa7c19db961b7b99fb20be62b0a826c992ad14e0f
       golang_install_dir: "{{ packages_golang_install_dir }}"
     become: true

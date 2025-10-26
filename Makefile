@@ -1,6 +1,6 @@
 .PHONY: workstation
 workstation: galaxy
-	ansible-playbook -vv --diff workstation.yml --ask-become-pass
+	ansible-playbook -vv --diff workstation.yml --ask-become-pass $(ARGS)
 
 .PHONY: galaxy
 galaxy:

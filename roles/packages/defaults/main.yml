@@ -9,6 +9,7 @@ packages_docker_apt_gpg_key: >-
   {{ packages_docker_repo_url }}/{{ ansible_distribution | lower }}/gpg
 packages_docker_apt_gpg_path: /etc/apt/trusted.gpg.d/docker.asc
 
+packages_packer_install: false
 packages_packer_apt_gpg_key: https://apt.releases.hashicorp.com/gpg
 packages_packer_apt_gpg_path: /etc/apt/trusted.gpg.d/packer.asc
 
