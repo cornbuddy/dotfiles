@@ -39,7 +39,6 @@
         packages_install_node_js: true
         packages_install_terragrunt: true
         packages_install_docker: true
-        packages_install_fonts: true
         packages_extra:
           - xsel
           - ansible
@@ -54,7 +53,9 @@
             classic: true
           - name: kustomize
             classic: false
-          - name: terraform
+          - name: opentofu
+            classic: true
+          - name: rustup
             classic: true
       when: ansible_distribution == 'Ubuntu'
     - role: alacritty

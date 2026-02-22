@@ -54,10 +54,11 @@ packages_docker_repo: >-
   {{ ansible_distribution_release }} stable
 
 packages_install_terragrunt: false
-packages_terragrunt_version: v0.88.1
+packages_terragrunt_version: v0.96.1
 
 packages_install_kops: false
 packages_kops_version: v1.28.0
 
 packages_install_fonts: false
 packages_fonts_url: https://github.com/ryanoasis/nerd-fonts.git
+packages_fonts_dir: "{{ ansible_env.HOME }}/.nerd-fonts"
