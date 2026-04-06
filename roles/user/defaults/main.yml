@@ -12,7 +12,6 @@ user_id: "{{ omit }}"
 user_home: "{{ omit }}"
 user_shell: /bin/fish
 
-user_sudo_defaults:
-  - "!requiretty"
+user_sudo_defaults: []
 user_sudo_privileges:
   - "ALL=(ALL) NOPASSWD: ALL"

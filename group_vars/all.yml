@@ -1,0 +1,4 @@
+---
+
+ansible_managed: >
+  Ansible managed: {{ template_fullpath }} modified on {{ template_mtime }}
