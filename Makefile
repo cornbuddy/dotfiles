@@ -4,8 +4,8 @@ workstation: galaxy
 
 .PHONY: galaxy
 galaxy:
-	ansible-galaxy role install --force -r requirements.yml
-	ansible-galaxy collection install --force -r requirements.yml
+	ansible-galaxy role install -r requirements.yml
+	ansible-galaxy collection install -r requirements.yml
 
 .PHONY: pre-commit
 pre-commit:

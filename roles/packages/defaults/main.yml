@@ -39,7 +39,11 @@ packages_install_node_js: false
 packages_install_operator_sdk: false
 
 packages_install_go: false
-packages_golang_install_dir: "/opt/go"
+packages_golang_install_dir: /opt/go
+packages_golang_mirror: https://go.dev/dl
+packages_golang_version: 1.26.2
+packages_golang_redis_sha256sum: >-
+  990e6b4bbba816dc3ee129eaeaf4b42f17c2800b88a2166c265ac1a200262282
 
 packages_install_docker: false
 packages_docker_items:

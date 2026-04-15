@@ -8,11 +8,3 @@ dependencies:
       nodejs_version: 24.x
       nodejs_generate_etc_profile: true
     become: true
-  - role: gantsign.golang
-    when: packages_install_go
-    vars:
-      golang_mirror: https://go.dev/dl
-      golang_version: 1.26.1
-      golang_redis_sha256sum: 031f088e5d955bab8657ede27ad4e3bc5b7c1ba281f05f245bcc304f327c987a
-      golang_install_dir: "{{ packages_golang_install_dir }}"
-    become: true

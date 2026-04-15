@@ -66,6 +66,11 @@
     owner: "{{ ansible_env.USER }}"
   become: true
 
+- name: Install golang
+  ansible.builtin.import_tasks: go.yml
+  when: packages_install_go | bool
+  tags: go
+
 - name: Install docker
   ansible.builtin.import_tasks: docker.yml
   when: packages_install_docker | bool

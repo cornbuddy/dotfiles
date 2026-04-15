@@ -1,0 +1,39 @@
+---
+
+- name: Check go version
+  ansible.builtin.command: go version
+  register: version
+  ignore_errors: true
+
+- name: Check if should install
+  ansible.builtin.set_fact:
+    packages_go_should_install: >-
+      {{ version.rc != 0
+      or version.stdout.find(packages_golang_version) == -1 }}
+
+- name: Remove existing installation
+  ansible.builtin.file:
+    state: absent
+    path: "{{ packages_golang_install_dir }}"
+  when: packages_go_should_install | bool
+  become: true
+
+- name: Set proper permissions to installation directory
+  ansible.builtin.file:
+    state: directory
+    recurse: true
+    path: "{{ packages_golang_install_dir }}"
+    owner: "{{ ansible_env.USER }}"
+  when: packages_go_should_install | bool
+  become: true
+
+- name: Go role
+  ansible.builtin.import_role:
+    name: gantsign.golang
+  vars:
+    golang_mirror: "{{ packages_golang_mirror }}"
+    golang_version: "{{ packages_golang_version }}"
+    golang_redis_sha256sum: "{{ packages_golang_redis_sha256sum }}"
+    golang_install_dir: "{{ packages_golang_install_dir }}"
+  when: packages_go_should_install | bool
+  become: true
