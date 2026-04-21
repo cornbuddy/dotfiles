@@ -39,6 +39,9 @@ packages_install_node_js: false
 packages_install_operator_sdk: false
 
 packages_install_go: false
+packages_golang_install:
+  - golang.org/x/tools/gopls@latest
+  - github.com/a-h/templ/cmd/templ@latest
 packages_golang_install_dir: /opt/go
 packages_golang_mirror: https://go.dev/dl
 packages_golang_version: 1.26.2

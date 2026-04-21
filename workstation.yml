@@ -35,6 +35,9 @@
     - role: packages
       tags: packages
       vars:
+        nodejs_npm_global_packages:
+          - name: tree-sitter-cli
+            version: 0.26.8
         packages_install_go: true
         packages_install_node_js: true
         packages_install_terragrunt: true

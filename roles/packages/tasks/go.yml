@@ -37,3 +37,7 @@
     golang_install_dir: "{{ packages_golang_install_dir }}"
   when: packages_go_should_install | bool
   become: true
+
+- name: Install go packages
+  ansible.builtin.command: "go install {{ item }}"
+  loop: "{{ packages_golang_install }}"
