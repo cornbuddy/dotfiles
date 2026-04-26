@@ -42,11 +42,13 @@
         packages_install_node_js: true
         packages_install_terragrunt: true
         packages_install_docker: true
+        packages_install_minikube: true
         packages_extra:
           - xsel
           - ansible
           - wireguard
           - openjdk-21-jdk
+          - podman
         packages_pip_extra:
           - pre-commit
         packages_snap_extra:
