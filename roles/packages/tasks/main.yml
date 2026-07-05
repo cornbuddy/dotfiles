@@ -40,7 +40,6 @@
     state: present
     name: "{{ item.name }}"
     classic: "{{ item.classic }}"
-    channel: "{{ item.channel | default(omit) }}"
   loop: "{{ packages_snap_extra }}"
   become: true
 

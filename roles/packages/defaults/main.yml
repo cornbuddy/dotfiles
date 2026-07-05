@@ -42,6 +42,7 @@ packages_install_go: false
 packages_golang_install:
   - golang.org/x/tools/gopls@latest
   - github.com/a-h/templ/cmd/templ@latest
+  - github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest
 packages_golang_install_dir: /opt/go
 packages_golang_mirror: https://go.dev/dl
 packages_golang_version: 1.26.2
