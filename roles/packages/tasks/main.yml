@@ -57,13 +57,10 @@
     state: present
   become: true
 
-- name: Set proper permissions to golang_install_dir
-  ansible.builtin.file:
-    state: directory
-    recurse: true
-    path: "{{ packages_golang_install_dir }}"
-    owner: "{{ ansible_env.USER }}"
-  become: true
+- name: Install hledger
+  ansible.builtin.import_tasks: hledger.yml
+  when: packages_install_hledger | bool
+  tags: hledger
 
 - name: Install golang
   ansible.builtin.import_tasks: go.yml

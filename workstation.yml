@@ -45,6 +45,7 @@
         packages_install_terragrunt: true
         packages_install_docker: true
         packages_install_minikube: true
+        packages_install_hledger: true
         packages_extra:
           - xsel
           - ansible

@@ -38,6 +38,21 @@ packages_install_minikube: false
 packages_install_node_js: false
 packages_install_operator_sdk: false
 
+packages_install_hledger: false
+packages_hledger_version: 1.51.2
+packages_hledger_files:
+  - hledger
+  - hledger-ui
+  - hledger-web
+packages_hledger_url: >-
+  https://github.com/simonmichael/hledger/releases/download/{{
+  packages_hledger_version
+  }}/hledger-{{
+  'mac' if ansible_facts['system'] == 'Darwin' else 'linux'
+  }}-{{
+  'arm64' if ansible_architecture == 'aarch64' else 'x64'
+  }}.tar.gz
+
 packages_install_go: false
 packages_golang_install:
   - golang.org/x/tools/gopls@latest

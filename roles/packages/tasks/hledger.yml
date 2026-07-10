@@ -1,0 +1,9 @@
+---
+- name: Install hledger
+  ansible.builtin.unarchive:
+    src: "{{ packages_hledger_url }}"
+    dest: /usr/local/bin
+    mode: "0755"
+    remote_src: true
+    include: "{{ packages_hledger_files }}"
+  become: true
