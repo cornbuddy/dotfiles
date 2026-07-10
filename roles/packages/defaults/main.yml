@@ -60,6 +60,7 @@ packages_golang_install:
   - golang.org/x/tools/gopls@latest
   - github.com/a-h/templ/cmd/templ@latest
   - github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest
+  - github.com/juev/hledger-lsp/cmd/hledger-lsp@v0.2.49
 packages_golang_install_dir: /opt/go
 packages_golang_mirror: https://go.dev/dl
 packages_golang_version: 1.26.2
