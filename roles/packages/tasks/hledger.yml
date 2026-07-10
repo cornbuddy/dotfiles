@@ -1,9 +1,22 @@
 ---
 - name: Install hledger
   ansible.builtin.unarchive:
+    include: "{{ packages_hledger_files }}"
     src: "{{ packages_hledger_url }}"
     dest: /usr/local/bin
     mode: "0755"
     remote_src: true
-    include: "{{ packages_hledger_files }}"
+    keep_newer: true
   become: true
+
+- name: Checkout hledger repo
+  ansible.builtin.git:
+    dest: "{{ packages_hledger_path }}"
+    repo: "{{ packages_hledger_repo }}"
+    version: main
+
+- name: Link main journal to default location
+  ansible.builtin.file:
+    src: "{{ packages_hledger_path }}/main.journal"
+    dest: "{{ ansible_env.HOME }}/.hledger.journal"
+    state: link
