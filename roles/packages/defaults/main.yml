@@ -42,6 +42,10 @@ packages_install_hledger: false
 packages_hledger_version: 1.51.2
 packages_hledger_repo: git@github.com:cornbuddy/finances.git
 packages_hledger_path: "{{ ansible_env.HOME }}/code/finances"
+# consider the following addons:
+# https://github.com/peti/hledger-interest
+# https://github.com/thesmokinator/hledger-textual
+packages_hledger_addons: []
 packages_hledger_files:
   - hledger
   - hledger-ui

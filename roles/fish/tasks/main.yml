@@ -1,11 +1,4 @@
 ---
-# - name: Add fish repo
-#   ansible.builtin.apt_repository:
-#     repo: "{{ fish_ppa_repo }}"
-#   become: true
-#   when:
-#     - ansible_distribution == "Ubuntu"
-
 - name: Update packages cache
   ansible.builtin.apt:
     update_cache: true

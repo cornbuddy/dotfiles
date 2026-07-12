@@ -9,7 +9,7 @@
     keep_newer: true
   become: true
 
-- name: Checkout hledger repo
+- name: Checkout finances repo
   ansible.builtin.git:
     dest: "{{ packages_hledger_path }}"
     repo: "{{ packages_hledger_repo }}"
