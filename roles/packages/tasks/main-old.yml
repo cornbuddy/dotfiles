@@ -1,0 +1,87 @@
+---
+
+- name: Get packer gpg key
+  ansible.builtin.get_url:
+    url: "{{ packages_packer_apt_gpg_key }}"
+    dest: "{{ packages_packer_apt_gpg_path }}"
+  become: true
+  when: packages_packer_install | bool
+
+- name: Add apt repositories
+  ansible.builtin.apt_repository:
+    repo: "{{ item }}"
+  loop: "{{ packages_apt_repositories }}"
+  become: true
+  when: packages_packer_install | bool
+
+- name: Install default packages
+  ansible.builtin.package:
+    name: "{{ packages_install }}"
+    state: present
+  become: true
+
+- name: Ensure that snapd is installed
+  ansible.builtin.apt:
+    name: snapd
+    state: present
+  become: true
+
+- name: Install snap extra packages
+  community.general.snap:
+    state: present
+    name: "{{ item.name }}"
+    classic: "{{ item.classic }}"
+  loop: "{{ packages_snap_extra }}"
+  become: true
+
+- name: Install pip packages
+  ansible.builtin.pip:
+    name: "{{ item }}"
+    state: latest
+    extra_args: --break-system-packages
+  loop: "{{ packages_pip_extra }}"
+  become: true
+
+- name: Install extra packages
+  ansible.builtin.package:
+    name: "{{ packages_extra }}"
+    state: present
+  become: true
+
+- name: Install hledger
+  ansible.builtin.import_tasks: hledger.yml
+  when: packages_install_hledger | bool
+  tags: hledger
+
+- name: Install golang
+  ansible.builtin.import_tasks: go.yml
+  when: packages_install_go | bool
+  tags: go
+
+- name: Install docker
+  ansible.builtin.import_tasks: docker.yml
+  when: packages_install_docker | bool
+
+- name: Install skaffold
+  ansible.builtin.import_tasks: skaffold.yml
+  when: packages_install_skaffold | bool
+
+- name: Install minikube
+  ansible.builtin.import_tasks: minikube.yml
+  when: packages_install_minikube | bool
+
+- name: Install operator sdk
+  ansible.builtin.import_tasks: operator-sdk.yml
+  when: packages_install_operator_sdk | bool
+
+- name: Install terragunt
+  ansible.builtin.import_tasks: terragrunt.yml
+  when: packages_install_terragrunt | bool
+
+- name: Install kops
+  ansible.builtin.import_tasks: kops.yml
+  when: packages_install_kops | bool
+
+- name: Install fonts
+  ansible.builtin.import_tasks: fonts.yml
+  when: packages_install_fonts | bool

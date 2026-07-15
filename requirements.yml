@@ -2,8 +2,13 @@
 
 roles:
   - name: deekayen.awscli2
+    version: 1.1.0
   - name: geerlingguy.nodejs
+    version: 7.1.0
   - name: gantsign.golang
+    version: 3.5.0
+  - name: danielrolls.nix
+    version: v3.51.0
 
 collections:
   - name: community.general

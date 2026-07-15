@@ -1,0 +1,8 @@
+---
+- name: Nix role
+  ansible.builtin.import_role:
+    name: danielrolls.nix
+  vars:
+    flakes: "{{ packages_nix_flakes }}"
+  when: packages_nix_install | bool
+  become: true

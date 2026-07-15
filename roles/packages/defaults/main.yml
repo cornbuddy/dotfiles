@@ -1,6 +1,6 @@
 ---
-
-packages_reboot: false
+packages_nix_install: true
+packages_nix_flakes: true
 
 packages_arch: >-
   {{ 'arm64' if ansible_architecture == 'aarch64' else 'amd64' }}

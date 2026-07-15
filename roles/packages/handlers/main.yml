@@ -1,9 +1,4 @@
 ---
 
-- name: Reboot
-  ansible.builtin.reboot:
-  become: true
-  when: packages_reboot | bool
-
 - name: Update font cache
   ansible.builtin.command: fc-cache -fv
