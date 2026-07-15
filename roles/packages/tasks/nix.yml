@@ -6,3 +6,8 @@
     flakes: "{{ packages_nix_flakes }}"
   when: packages_nix_install | bool
   become: true
+
+- name: Install flake
+  ansible.builtin.shell: >-
+    nix profile install {{ packages_nix_flake_path }}
+  when: packages_nix_flake_path is defined
