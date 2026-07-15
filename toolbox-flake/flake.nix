@@ -3,9 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-    };
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = { self, nixpkgs, flake-utils }:
@@ -14,31 +12,26 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in {
         # Define the package output
-        packages.${system}.default = pkgs.buildEnv {
+        packages.default = pkgs.buildEnv {
           name = "toolbox";
           paths = with pkgs; [
             # development
             neovim
             tree-sitter
-            moon
-            buck2
-            bazel_7
             cargo
             clippy
             rustc
             go
             delve
             tflint
-            bundler
             ruby
             rustfmt
             gcc
             gnumake
             nodejs_24
-            jdk23
-            python313
-            python313Packages.pip
-            terraform
+            jdk25
+            python314
+            opentofu
             terraform-docs
             terragrunt
             awscli2
@@ -47,17 +40,14 @@
             tmux
             gitmux
             pre-commit
-            packer
             action-validator
             # language servers
             rust-analyzer
             ansible-language-server
-            nodePackages.bash-language-server
-            dockerfile-language-server-nodejs
+            dockerfile-language-server
             docker-compose-language-service
             lua-language-server
-            python312Packages.python-lsp-server
-            terraform-ls
+            tofu-ls
             gopls
             helm-ls
             ccls
@@ -66,7 +56,6 @@
             docker
             docker-buildx
             docker-compose
-            kubectl
             kubernetes-helm
             kustomize
             fluxcd
@@ -80,7 +69,6 @@
             tofi
             brightnessctl
             # tools
-            google-chrome
             firefox
             deluge
             wireguard-tools
@@ -101,5 +89,5 @@
           ];
         };
       }
-  );
+    );
 }
