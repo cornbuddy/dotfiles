@@ -19,11 +19,6 @@
         - Restart journald
       become: true
       when: ansible_distribution == 'Ubuntu'
-    # to fetch all dependencies and perform switch
-    - ansible.builtin.import_role:
-        name: nixos
-      tags: nixos
-      when: ansible_distribution == 'NixOS'
   handlers:
     - name: Restart journald
       ansible.builtin.service:
@@ -35,16 +30,8 @@
     - role: packages
       vars:
         packages_nix_flake_path: "{{ playbook_dir }}/toolbox-flake"
-    # - role: alacritty
-    #   tags: alacritty
-    # - role: fish
-    #   tags: fish
-    # - role: neovim
-    #   tags: neovim
-    # - role: tmux
-    #   tags: tmux
-    # - role: user
-    #   tags: user
-    #   vars:
-    #     user_name: cornbuddy
-    #   when: ansible_distribution == 'Ubuntu'
+    - role: user
+      vars:
+        user_shell: "{{ ansible_env.HOME }}/.nix-profile/bin/fish"
+      tags: user
+      when: ansible_distribution == 'Ubuntu'

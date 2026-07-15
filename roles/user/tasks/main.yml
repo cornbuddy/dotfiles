@@ -1,10 +1,4 @@
 ---
-- name: Create group
-  ansible.builtin.group:
-    name: "{{ user_primary_group }}"
-    gid: "{{ user_group_id }}"
-  become: true
-
 - name: Create secondary groups
   ansible.builtin.group:
     name: "{{ item }}"
@@ -13,10 +7,8 @@
 
 - name: Create user
   ansible.builtin.user:
-    group: "{{ user_primary_group }}"
     groups: "{{ user_secondary_groups }}"
     name: "{{ user_name }}"
-    uid: "{{ user_id }}"
     shell: "{{ user_shell }}"
   become: true
 

@@ -21,6 +21,12 @@
     - src: fish/alias.fish.j2
       dest: "{{ packages_fish_config_dir }}/conf.d/alias.fish"
 
+- name: Make fish available as shells
+  ansible.builtin.lineinfile:
+    path: /etc/shells
+    line: "{{ ansible_env.HOME }}/.nix-profile/bin/fish"
+  become: true
+
 - name: Install fisher
   ansible.builtin.shell:
     cmd: >-
