@@ -1,0 +1,16 @@
+---
+- name: Download tpm
+  ansible.builtin.git:
+    dest: "{{ packages_tmux_plugins_dir }}/tpm"
+    repo: "{{ packages_tmux_tpm_git_url }}"
+    force: true
+
+- name: Configure
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - src: tmux/tmux.conf.j2
+      dest: "{{ packages_tmux_config_path }}"
+    - src: tmux/gitmux.conf.j2
+      dest: "{{ packages_tmux_gitmux_config_path }}"

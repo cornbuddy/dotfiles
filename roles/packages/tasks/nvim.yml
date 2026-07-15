@@ -1,0 +1,22 @@
+---
+- name: Create nvim config directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ packages_nvim_plug_path }}"
+
+- name: Install plugin manager
+  ansible.builtin.get_url:
+    url: "{{ packages_nvim_plug_url }}"
+    dest: "{{ packages_nvim_plug_path }}"
+
+- name: Configure
+  ansible.builtin.git:
+    repo: "{{ packages_nvim_config_repo }}"
+    dest: "{{ packages_nvim_config_path }}"
+    force: true
+
+- name: Sync plugins
+  ansible.builtin.command: nvim --headless +PlugInstall +qa
+  changed_when: false

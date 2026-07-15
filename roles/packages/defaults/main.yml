@@ -2,93 +2,46 @@
 packages_nix_install: true
 packages_nix_flakes: true
 
-packages_arch: >-
-  {{ 'arm64' if ansible_architecture == 'aarch64' else 'amd64' }}
-packages_docker_repo_url: https://download.docker.com/linux
-packages_docker_apt_gpg_key: >-
-  {{ packages_docker_repo_url }}/{{ ansible_distribution | lower }}/gpg
-packages_docker_apt_gpg_path: /etc/apt/trusted.gpg.d/docker.asc
+packages_alacritty_config_dir: "{{ lookup('env', 'HOME') }}/.config/alacritty"
 
-packages_packer_install: false
-packages_packer_apt_gpg_key: https://apt.releases.hashicorp.com/gpg
-packages_packer_apt_gpg_path: /etc/apt/trusted.gpg.d/packer.asc
+packages_fish_config_dir: "{{ lookup('env', 'HOME') }}/.config/fish"
+packages_fish_go_path: "{{ ansible_env.HOME }}/go"
+packages_fish_local_bin_path: "{{ ansible_env.HOME }}/.local/bin"
+packages_fish_fisher_plugins:
+  - jorgebucaran/fisher
+  - jorgebucaran/autopair.fish
+  - pure-fish/pure
+  - evanlucas/fish-kubectl-completions
+  - joehillen/ev-fish
 
-packages_extra: []
-packages_snap_extra: []
-packages_pip_extra: []
-packages_apt_repositories:
-  - >-
-    deb [arch={{ packages_arch }}]
-    https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main
-packages_install:
-  - software-properties-common
-  - curl
-  - build-essential
-  - gcc
-  - g++
-  - htop
-  - ripgrep
-  - ca-certificates
-  - gnupg
-  - python3-virtualenv
-  - tree
+packages_nvim_plug_path: >-
+  {{ ansible_env.HOME }}/.local/share/nvim/site/autoload/
+packages_nvim_plug_url: >-
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+packages_nvim_config_repo: "git@github.com:cornBuddy/nvim-config.git"
+packages_nvim_config_path: "{{ ansible_env.HOME }}/.config/nvim"
 
-packages_install_skaffold: false
-packages_install_minikube: false
-packages_install_node_js: false
-packages_install_operator_sdk: false
+packages_git_config: "{{ ansible_env.HOME }}/.gitconfig"
+packages_git_ssh_config: "{{ ansible_env.HOME }}/.ssh/config"
 
-packages_install_hledger: false
+packages_tmux_config_path: "{{ ansible_env.HOME }}/.tmux.conf"
+packages_tmux_plugins_dir: "{{ ansible_env.HOME }}/.tmux/plugins"
+packages_tmux_resurrect_dir: "{{ ansible_env.HOME }}/.tmux/resurrect"
+packages_tmux_gitmux_config_path: "{{ ansible_env.HOME }}/.gitmux.conf"
+packages_tmux_tpm_git_url: https://github.com/tmux-plugins/tpm
+packages_tmux_status_battery: >-
+  #{battery_icon} #{battery_percentage}
+packages_tmux_status_gitmux: >-
+  #[fg=brightblack,bg=black]#[fg=white,bg=brightblack]
+  #(gitmux -cfg {{ packages_tmux_gitmux_config_path }}
+  '#{pane_current_path}')#[bg=brightblack]
+packages_tmux_status_right: >-
+  #H {{ packages_tmux_status_battery }} {{ packages_tmux_status_gitmux }}
+
 packages_hledger_version: 1.51.2
 packages_hledger_repo: git@github.com:cornbuddy/finances.git
 packages_hledger_path: "{{ ansible_env.HOME }}/code/finances"
-# consider the following addons:
-# https://github.com/peti/hledger-interest
-# https://github.com/thesmokinator/hledger-textual
-packages_hledger_addons: []
-packages_hledger_files:
-  - hledger
-  - hledger-ui
-  - hledger-web
-packages_hledger_url: >-
-  https://github.com/simonmichael/hledger/releases/download/{{
-  packages_hledger_version
-  }}/hledger-{{
-  'mac' if ansible_facts['system'] == 'Darwin' else 'linux'
-  }}-{{
-  'arm64' if ansible_architecture == 'aarch64' else 'x64'
-  }}.tar.gz
 
-packages_install_go: false
-packages_golang_install:
-  - golang.org/x/tools/gopls@latest
-  - github.com/a-h/templ/cmd/templ@latest
-  - github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest
-  - github.com/juev/hledger-lsp/cmd/hledger-lsp@v0.2.49
-packages_golang_install_dir: /opt/go
-packages_golang_mirror: https://go.dev/dl
-packages_golang_version: 1.26.2
-packages_golang_redis_sha256sum: >-
-  990e6b4bbba816dc3ee129eaeaf4b42f17c2800b88a2166c265ac1a200262282
-
-packages_install_docker: false
-packages_docker_items:
-  - containerd.io
-  - docker-ce
-  - docker-ce-cli
-  - docker-buildx-plugin
-  - docker-compose-plugin
-packages_docker_repo: >-
-  deb [arch={{ packages_arch }}]
-  {{ packages_docker_repo_url }}/{{ ansible_distribution | lower }}
-  {{ ansible_distribution_release }} stable
-
-packages_install_terragrunt: false
-packages_terragrunt_version: v0.96.1
-
-packages_install_kops: false
-packages_kops_version: v1.28.0
-
-packages_install_fonts: false
+packages_fonts_install: false
 packages_fonts_url: https://github.com/ryanoasis/nerd-fonts.git
 packages_fonts_dir: "{{ ansible_env.HOME }}/.nerd-fonts"

@@ -1,10 +1,2 @@
 ---
-dependencies:
-  - role: deekayen.awscli2
-    when: ansible_distribution != 'MacOSX'
-  - role: geerlingguy.nodejs
-    when: packages_install_node_js
-    vars:
-      nodejs_version: 24.x
-      nodejs_generate_etc_profile: true
-    become: true
+dependencies: []

@@ -16,6 +16,8 @@
           name = "toolbox";
           paths = with pkgs; [
             # development
+            bun
+            luaPackages.tree-sitter-cli
             neovim
             tree-sitter
             cargo
@@ -59,6 +61,7 @@
             kubernetes-helm
             kustomize
             fluxcd
+            podman
             # window manager
             hyprland
             hyprlock
@@ -86,6 +89,10 @@
             htop
             tree
             file
+            hledger
+            hledger-ui
+            hledger-web
+            hledger-fmt
           ];
         };
       }

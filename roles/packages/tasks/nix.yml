@@ -10,4 +10,6 @@
 - name: Install flake
   ansible.builtin.shell: >-
     nix profile install {{ packages_nix_flake_path }}
+  environment:
+    HOME: "{{ lookup('env', 'HOME') }}"
   when: packages_nix_flake_path is defined

@@ -1,0 +1,4 @@
+---
+user_email: "heorhi.sakovich@gmail.com"
+user_signingkey: "{{ ansible_env.HOME }}/.ssh/github.pub"
+github_identity_file: "{{ ansible_env.HOME }}/.ssh/github"

@@ -26,7 +26,7 @@ bind-key g resize-pane -t 2 -x 90
 bind '"' split-window -v -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
 
-bind-key r source-file {{ tmux_config_path }} \; display-message "updated"
+bind-key r source-file {{ packages_tmux_config_path }} \; display-message "updated"
 bind-key -T copy-mode-vi 'v' send -X begin-selection
 bind-key -T copy-mode-vi 'r' send -X rectangle-toggle
 
@@ -36,7 +36,7 @@ set-option -g focus-events on
 # opts
 set-window-option -g mode-keys vi
 set -g status-right-length 80
-set -g status-right "{{ tmux_status_right }}"
+set -g status-right "{{ packages_tmux_status_right }}"
 
 # plugins
 set -g @plugin 'tmux-plugins/tpm'
@@ -51,9 +51,9 @@ set -g @yank_selection 'primary'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @resurrect-strategy-nvim 'session'
 set -g @resurrect-capture-pane-contents 'on'
-set -g @resurrect-dir {{ tmux_resurrect_dir }}
+set -g @resurrect-dir {{ packages_tmux_resurrect_dir }}
 
 set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @continuum-restore 'on'
 
-run '{{ tmux_plugins_dir }}/tpm/tpm'
+run '{{ packages_tmux_plugins_dir }}/tpm/tpm'

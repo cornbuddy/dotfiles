@@ -1,0 +1,17 @@
+---
+- name: Set platform dependent vars
+  ansible.builtin.include_vars:
+    file: >-
+      {{ ansible_bios_vendor | ansible.builtin.lower }}.yml
+    name: packages_git_platform
+
+- name: Configure git
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: 0600
+  loop:
+    - src: git/gitconfig.j2
+      dest: "{{ packages_git_config }}"
+    - src: git/ssh-config.j2
+      dest: "{{ packages_git_ssh_config }}"

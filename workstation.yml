@@ -33,50 +33,18 @@
 
   roles:
     - role: packages
-      tags: packages
       vars:
         packages_nix_flake_path: "{{ playbook_dir }}/toolbox-flake"
-        nodejs_npm_global_packages:
-          - name: tree-sitter-cli
-            version: 0.26.8
-          - name: bun
-            version: 1.3.14
-        packages_install_go: true
-        packages_install_node_js: true
-        packages_install_terragrunt: true
-        packages_install_docker: true
-        packages_install_minikube: true
-        packages_install_hledger: true
-        packages_extra:
-          - xsel
-          - ansible
-          - wireguard
-          - openjdk-21-jdk
-          - podman
-        packages_pip_extra:
-          - pre-commit
-        packages_snap_extra:
-          - name: kubectl
-            classic: true
-          - name: helm
-            classic: true
-          - name: kustomize
-            classic: false
-          - name: opentofu
-            classic: true
-          - name: rustup
-            classic: true
-      when: ansible_distribution == 'Ubuntu'
-    - role: alacritty
-      tags: alacritty
-    - role: fish
-      tags: fish
-    - role: neovim
-      tags: neovim
-    - role: tmux
-      tags: tmux
-    - role: user
-      tags: user
-      vars:
-        user_name: cornbuddy
-      when: ansible_distribution == 'Ubuntu'
+    # - role: alacritty
+    #   tags: alacritty
+    # - role: fish
+    #   tags: fish
+    # - role: neovim
+    #   tags: neovim
+    # - role: tmux
+    #   tags: tmux
+    # - role: user
+    #   tags: user
+    #   vars:
+    #     user_name: cornbuddy
+    #   when: ansible_distribution == 'Ubuntu'

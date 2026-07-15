@@ -1,14 +1,8 @@
----
-- name: Install hledger
-  ansible.builtin.unarchive:
-    include: "{{ packages_hledger_files }}"
-    src: "{{ packages_hledger_url }}"
-    dest: /usr/local/bin
-    mode: "0755"
-    remote_src: true
-    keep_newer: true
-  become: true
+# consider the following addons:
+# https://github.com/peti/hledger-interest
+# https://github.com/thesmokinator/hledger-textual
 
+---
 - name: Checkout finances repo
   ansible.builtin.git:
     dest: "{{ packages_hledger_path }}"

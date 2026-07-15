@@ -1,0 +1,49 @@
+---
+- name: Create fish config directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ packages_fish_config_dir }}"
+    - "{{ packages_fish_config_dir }}/conf.d"
+    - "{{ packages_fish_config_dir }}/functions"
+
+- name: Configure fish
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "0755"
+  loop:
+    - src: fish/config.fish.j2
+      dest: "{{ packages_fish_config_dir }}/config.fish"
+    - src: fish/env.fish.j2
+      dest: "{{ packages_fish_config_dir }}/conf.d/env.fish"
+    - src: fish/alias.fish.j2
+      dest: "{{ packages_fish_config_dir }}/conf.d/alias.fish"
+
+- name: Install fisher
+  ansible.builtin.shell:
+    cmd: >-
+      curl -sL
+      https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish
+      | source
+      && fisher install jorgebucaran/fisher
+    executable: fish
+  changed_when: false
+
+- name: Configure fisher
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "0755"
+  loop:
+    - src: fish/fish_plugins.j2
+      dest: "{{ packages_fish_config_dir }}/fish_plugins"
+    - src: fish/theme.j2
+      dest: "{{ packages_fish_config_dir }}/conf.d/theme.fish"
+
+- name: Sync fisher
+  ansible.builtin.shell:
+    cmd: fisher update
+    executable: fish
+  changed_when: false
