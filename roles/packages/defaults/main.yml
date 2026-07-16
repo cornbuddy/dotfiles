@@ -2,6 +2,9 @@
 packages_nix_install: true
 packages_nix_flakes: true
 
+packages_go_install:
+  - github.com/juev/hledger-lsp/cmd/hledger-lsp@latest
+
 packages_alacritty_config_dir: "{{ lookup('env', 'HOME') }}/.config/alacritty"
 
 packages_fish_config_dir: "{{ lookup('env', 'HOME') }}/.config/fish"

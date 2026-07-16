@@ -10,6 +10,7 @@
     - alacritty
     - fish
     - git
+    - go
     - hledger
     - nvim
     - tmux
