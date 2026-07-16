@@ -2,42 +2,13 @@
 - name: provision workstation
   hosts: localhost
   gather_facts: true
-
-  pre_tasks:
-    - name: Set lid close behaviour
-      ansible.builtin.lineinfile:
-        path: /etc/systemd/logind.conf
-        line: HandleLidSwitch=lock
-      become: true
-      when: ansible_distribution == 'Ubuntu'
-    - name: Set log max size
-      ansible.builtin.lineinfile:
-        path: /etc/systemd/journald.conf
-        regexp: ^SystemMaxUse=
-        line: SystemMaxUse=50M
-      notify:
-        - Restart journald
-      become: true
-      when: ansible_distribution == 'Ubuntu'
-    - name: Swap Caps and Ctrl for GNOME Desktop (Non-interactive)
-      community.general.dconf:
-        key: /org/gnome/desktop/input-sources/xkb-options
-        value: "['ctrl:swapcaps']"
-        state: present
-      when: ansible_distribution == 'Ubuntu'
-  handlers:
-    - name: Restart journald
-      ansible.builtin.service:
-        name: systemd-journald
-        state: restarted
-      become: true
-
   roles:
     - role: packages
       vars:
         packages_nix_flake_path: "{{ playbook_dir }}/toolbox-flake"
-    - role: user
+
+    - role: ubuntu
       vars:
         user_shell: "{{ ansible_env.HOME }}/.nix-profile/bin/fish"
-      tags: user
+      tags: distro
       when: ansible_distribution == 'Ubuntu'

@@ -83,7 +83,6 @@
             ripgrep
             openssh
             fish
-            alacritty
             zip
             unzip
             htop

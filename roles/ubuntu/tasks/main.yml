@@ -1,0 +1,21 @@
+---
+- name: Set lid close behaviour
+  ansible.builtin.lineinfile:
+    path: /etc/systemd/logind.conf
+    line: HandleLidSwitch=lock
+  become: true
+
+- name: Set log max size
+  ansible.builtin.lineinfile:
+    path: /etc/systemd/journald.conf
+    regexp: ^SystemMaxUse=
+    line: SystemMaxUse=50M
+  notify:
+    - Restart journald
+  become: true
+
+- name: Swap Caps and Ctrl for GNOME Desktop (Non-interactive)
+  community.general.dconf:
+    key: /org/gnome/desktop/input-sources/xkb-options
+    value: "['ctrl:swapcaps']"
+    state: present
