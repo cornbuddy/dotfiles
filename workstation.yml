@@ -2,10 +2,12 @@
 - name: provision workstation
   hosts: localhost
   gather_facts: true
+
   roles:
     - role: packages
       vars:
         packages_nix_flake_path: "{{ playbook_dir }}/toolbox-flake"
+      tags: packages
 
     - role: ubuntu
       vars:

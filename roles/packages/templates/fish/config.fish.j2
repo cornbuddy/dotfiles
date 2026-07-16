@@ -8,8 +8,16 @@ function __fish_git_prompt_ready
 end
 
 # general
-fish_vi_key_bindings
+set -g fish_key_bindings fish_vi_key_bindings
 set -U fish_greeting
+
+# Force autopair to load explicitly inside Vi's insert mode
+function fish_user_key_bindings
+    if functions -q _autopair_fish_key_bindings
+        # Bind specifically to Vi insert mode
+        _autopair_fish_key_bindings -M insert
+    end
+end
 
 # prompt
 set -U pure_enable_git false
