@@ -72,11 +72,7 @@
             tofi
             brightnessctl
             # tools
-            firefox
-            deluge
             wireguard-tools
-            acpi
-            pavucontrol
             curl
             dig
             jq
