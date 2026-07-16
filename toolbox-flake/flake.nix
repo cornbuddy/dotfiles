@@ -14,6 +14,7 @@
         # Define the package output
         packages.default = pkgs.buildEnv {
           name = "toolbox";
+          pathsToLink = [ "/bin" "/share" ];
           paths = with pkgs; [
             # development
             bun
@@ -62,15 +63,6 @@
             kustomize
             fluxcd
             podman
-            # window manager
-            hyprland
-            hyprlock
-            hypridle
-            wlogout
-            wl-clipboard
-            waybar
-            tofi
-            brightnessctl
             # tools
             wireguard-tools
             curl
