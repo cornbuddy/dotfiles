@@ -18,3 +18,8 @@ set -U pure_show_system_time true
 
 # hotkeys
 bind -M insert \cf accept-autosuggestion
+
+# enable nix
+if test -e "{{ packages_nix_daemon }}.fish"
+    source "{{ packages_nix_daemon }}.fish"
+end

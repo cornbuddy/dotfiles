@@ -8,7 +8,8 @@
   become: true
 
 - name: Install flake
-  ansible.builtin.shell: >-
+  ansible.builtin.shell: |-
+    . {{ packages_nix_daemon }}.sh
     nix profile install {{ packages_nix_flake_path }}
   environment:
     HOME: "{{ lookup('env', 'HOME') }}"
