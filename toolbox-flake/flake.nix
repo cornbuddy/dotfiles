@@ -44,6 +44,8 @@
             gitmux
             pre-commit
             action-validator
+            xsel
+            wl-clipboard
             # language servers
             rust-analyzer
             ansible-language-server
