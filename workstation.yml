@@ -6,18 +6,24 @@
   pre_tasks:
     - name: Set lid close behaviour
       ansible.builtin.lineinfile:
-        path: "/etc/systemd/logind.conf"
-        line: "HandleLidSwitch=lock"
+        path: /etc/systemd/logind.conf
+        line: HandleLidSwitch=lock
       become: true
       when: ansible_distribution == 'Ubuntu'
     - name: Set log max size
       ansible.builtin.lineinfile:
-        path: "/etc/systemd/journald.conf"
-        regexp: "^SystemMaxUse="
-        line: "SystemMaxUse=50M"
+        path: /etc/systemd/journald.conf
+        regexp: ^SystemMaxUse=
+        line: SystemMaxUse=50M
       notify:
         - Restart journald
       become: true
+      when: ansible_distribution == 'Ubuntu'
+    - name: Swap Caps and Ctrl for GNOME Desktop (Non-interactive)
+      community.general.dconf:
+        key: /org/gnome/desktop/input-sources/xkb-options
+        value: "['ctrl:swapcaps']"
+        state: present
       when: ansible_distribution == 'Ubuntu'
   handlers:
     - name: Restart journald
