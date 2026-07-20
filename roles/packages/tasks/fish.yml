@@ -26,6 +26,7 @@
     path: /etc/shells
     line: "{{ ansible_env.HOME }}/.nix-profile/bin/fish"
   become: true
+  when: ansible_distribution != 'NixOS'
 
 - name: Install fisher
   ansible.builtin.shell:

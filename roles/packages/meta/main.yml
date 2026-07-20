@@ -1,0 +1,7 @@
+---
+dependencies:
+  - role: danielrolls.nix
+    vars:
+      flakes: "{{ packages_nix_flakes }}"
+    become: true
+    when: ansible_distribution != 'NixOS'

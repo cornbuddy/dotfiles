@@ -1,15 +1,11 @@
 ---
-- name: Nix role
-  ansible.builtin.import_role:
-    name: danielrolls.nix
-  vars:
-    flakes: "{{ packages_nix_flakes }}"
-  when: packages_nix_install | bool
-  become: true
-
-- name: Install flake
+- name: Enable flake
   ansible.builtin.shell: |-
+    {% if ansible_distribution != 'NixOS' %}
     . {{ packages_nix_daemon }}.sh
+    {% endif %}
+
     nix profile add --show-trace {{ packages_nix_flake_path }}
     nix-collect-garbage
-  when: packages_nix_flake_path is defined
+  when:
+    - packages_nix_flake_path is defined

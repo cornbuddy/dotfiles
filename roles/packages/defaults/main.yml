@@ -1,5 +1,4 @@
 ---
-packages_nix_install: true
 packages_nix_flakes: true
 
 packages_go_install:
@@ -28,6 +27,9 @@ packages_nvim_config_path: "{{ ansible_env.HOME }}/.config/nvim"
 
 packages_git_config: "{{ ansible_env.HOME }}/.gitconfig"
 packages_git_ssh_config: "{{ ansible_env.HOME }}/.ssh/config"
+packages_git_email: heorhi.sakovich@gmail.com
+packages_git_signingkey: "{{ ansible_env.HOME }}/.ssh/github.pub"
+packages_git_github_identity_file: "{{ ansible_env.HOME }}/.ssh/github"
 
 packages_tmux_config_path: "{{ ansible_env.HOME }}/.tmux.conf"
 packages_tmux_plugins_dir: "{{ ansible_env.HOME }}/.tmux/plugins"

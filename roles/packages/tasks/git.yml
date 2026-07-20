@@ -1,10 +1,4 @@
 ---
-- name: Set platform dependent vars
-  ansible.builtin.include_vars:
-    file: >-
-      {{ ansible_bios_vendor | ansible.builtin.lower }}.yml
-    name: packages_git_platform
-
 - name: Configure git
   ansible.builtin.template:
     src: "{{ item.src }}"

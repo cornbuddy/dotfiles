@@ -14,3 +14,7 @@
         user_shell: "{{ ansible_env.HOME }}/.nix-profile/bin/fish"
       tags: distro
       when: ansible_distribution == 'Ubuntu'
+
+    - role: nixos
+      tags: distro
+      when: ansible_distribution == 'NixOS'
