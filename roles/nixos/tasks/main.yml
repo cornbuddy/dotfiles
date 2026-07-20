@@ -1,22 +1,15 @@
 ---
-- name: Copy dwm source
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/files/dwm/"
-    dest: "{{ nixos_config_directory }}/dwm/"
-  become: true
-  notify: nixos rebuild
-
 - name: Configure
-  ansible.builtin.template:
+  ansible.builtin.copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     mode: "0644"
   become: true
-  notify: nixos rebuild
+  notify: Nixos rebuild
   loop:
-    - src: packages.nix.j2
+    - src: packages.nix
       dest: "{{ nixos_config_directory }}/packages.nix"
-    - src: nvidia-disable.nix.j2
+    - src: nvidia-disable.nix
       dest: "{{ nixos_config_directory }}/nvidia-disable.nix"
-    - src: configuration.nix.j2
+    - src: configuration.nix
       dest: "{{ nixos_config_directory }}/configuration.nix"

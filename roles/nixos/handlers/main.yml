@@ -1,15 +1,15 @@
 ---
-- name: nix-channel update
-  listen: nixos rebuild
-  command: nix-channel --update
+- name: &update nix-channel --update
+  command: *update
+  listen: Nixos rebuild
   become: true
 
-- name: nixos-rebuild switch
-  listen: nixos rebuild
-  command: nixos-rebuild switch --upgrade
+- name: &switch nixos-rebuild switch --upgrade
+  command: *switch
+  listen: Nixos rebuild
   become: true
 
-- name: nixos-rebuild boot
-  listen: nixos rebuild
-  command: nixos-rebuild boot
+- name: &boot nixos-rebuild boot
+  command: *boot
+  listen: Nixos rebuild
   become: true

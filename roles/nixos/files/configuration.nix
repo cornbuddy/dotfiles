@@ -1,5 +1,3 @@
-{{ ansible_managed | comment }}
-
 { config, pkgs, ... }:
 
 {
@@ -10,17 +8,12 @@
       ./packages.nix
     ];
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "26.05";
 
   hardware.enableAllFirmware  = true;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.auto-optimise-store = true;
   nix.gc.automatic = true;
   nix.gc.dates = "daily";
@@ -31,7 +24,7 @@
   networking.networkmanager.enable = true;
   networking.networkmanager.insertNameservers = [ "1.1.1.1" "1.0.0.1" ];
 
-  time.timeZone = "Asia/Tbilisi";
+  time.timeZone = "Europe/Minsk";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
@@ -46,13 +39,8 @@
   };
 
   services.logind.lidSwitch = "lock";
-  services.logind.extraConfig = ''
-    HandlePowerKey=ignore
-  '';
-
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  services.logind.settings.Login = {
+    HandlePowerKey = "ignore";
   };
 
   users.users.cornbuddy = {
