@@ -1,51 +1,38 @@
 @import "colors.css";
 
 /*======= MODULE INDEPENDENT =======*/
-#distro-group {
-  margin: 4px 5px;
+#logout-group {
+  margin: 4px 4px;
   background-color: @surface_container;
   border-radius: 20px;
   color: @primary;
 }
 
-#custom-distro {
+#custom-power {
   color: @primary;
-  padding: 6px 15px 6px 10px;
+  padding: 6px 12px 6px 10px;
 }
 
-#custom-terminal {
-  color: #a6e3a1;
+#custom-power:hover {
+  color: @tertiary;
+}
+
+#custom-reboot {
+  color: @primary;
   padding: 0px 10px;
 }
 
-#custom-code {
-  color: #89b4fa;
-  padding: 0px 10px;
+#custom-reboot:hover {
+  color: @tertiary;
 }
 
-#custom-office {
-  color: #ff6f4c;
-  padding: 0px 10px;
+#custom-lock {
+  color: @primary;
+  padding: 0px 12px;
 }
 
-#custom-obsidian {
-  color: #cba6f7;
-  padding: 0px 10px;
-}
-
-#custom-files {
-  color: #f9e2af;
-  padding: 0px 10px 0px 8px;
-}
-
-#custom-spotify {
-  color: #1db954;
-  padding: 0px 10px;
-}
-
-#custom-browser {
-  color: #fab387;
-  padding: 0px 15px 0px 10px;
+#custom-lock:hover {
+  color: @tertiary;
 }
 
 #power-profiles-daemon,

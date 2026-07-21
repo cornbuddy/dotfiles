@@ -1,6 +1,6 @@
 ---
 - name: Configure waybar
-  ansible.builtin.copy:
+  ansible.posix.synchronize:
     src: waybar
     # trailing slash is important
     dest: "{{ packages_xdg_config }}/"

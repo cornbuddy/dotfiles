@@ -1,8 +1,7 @@
 {
   "clock": {
-    "timezone": "Asia/Jakarta",
-    "format": "󰃱 <span size='11pt'>{:%H.%M }</span>",
-    "format-alt": "󰃱 <span size='11pt'>{:%d %B %Y}</span>",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    "format": "󰃱  {0:%d.%m.%Y}    {0:%H:%M} ",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "on-click": "xdg-open https://calendar.google.com"
   }
 }

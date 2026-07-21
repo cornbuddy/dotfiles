@@ -1,5 +1,5 @@
 {
-  "hyprland/workspaces": {
+  "niri/workspaces": {
     "format": "{icon} {windows}",
     "on-click": "activate",
     "persistent-workspaces": {

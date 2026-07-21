@@ -1,0 +1,17 @@
+{
+  "custom/power": {
+    "format": "󰤆",
+    "tooltip": false,
+    "on-click": "systemctl poweroff"
+  },
+  "custom/reboot": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "systemctl reboot"
+  },
+  "custom/lock": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "loginctl lock-session"
+  }
+}

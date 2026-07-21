@@ -8,7 +8,7 @@
   "spacing": 6,
   "include": [
     "./modules/groups.jsonc",
-    "./modules/distro.jsonc",
+    "./modules/logout.jsonc",
     "./modules/storage.jsonc",
     "./modules/system.jsonc",
     "./modules/power-profiles-daemon.jsonc",
@@ -21,20 +21,20 @@
     "./modules/tray-notif.jsonc"
   ],
   "modules-left": [
-    "group/distro-group",
     "group/storage",
     "group/system"
   ],
   "modules-center": [
-    "power-profiles-daemon",
-    "hyprland/workspaces",
+    "niri/workspaces",
     "idle_inhibitor"
   ],
   "modules-right": [
     "group/audio",
     "group/connections",
+    "power-profiles-daemon",
     "battery",
     "clock",
+    "group/logout-group",
     "group/tray-group"
   ]
 }
