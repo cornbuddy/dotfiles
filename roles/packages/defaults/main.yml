@@ -1,6 +1,8 @@
 ---
 packages_nix_flakes: true
 
+packages_waybar_config_dir: "{{ lookup('env', 'HOME') }}/.config/waybar"
+
 packages_go_install:
   - github.com/juev/hledger-lsp/cmd/hledger-lsp@latest
 

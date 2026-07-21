@@ -1,0 +1,19 @@
+---
+- name: Ensure waybar config directory exists
+  ansible.builtin.file:
+    path: "{{ packages_waybar_config_dir }}"
+    state: directory
+  tags: waybar
+
+- name: Configure waybar
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  tags: waybar
+  loop:
+    - src: waybar/config.jsonc.j2
+      dest: "{{ packages_waybar_config_dir }}/config.jsonc"
+    - src: waybar/style.css.j2
+      dest: "{{ packages_waybar_config_dir }}/style.css"
+    - src: waybar/colors.css.j2
+      dest: "{{ packages_waybar_config_dir }}/colors.css"

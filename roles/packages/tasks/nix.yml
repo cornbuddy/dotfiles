@@ -7,5 +7,4 @@
 
     nix profile add --show-trace {{ packages_nix_flake_path }}
     nix-collect-garbage
-  when:
-    - packages_nix_flake_path is defined
+  when: packages_nix_flake_path is defined

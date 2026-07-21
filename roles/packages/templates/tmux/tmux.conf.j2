@@ -54,6 +54,7 @@ set -g @resurrect-capture-pane-contents 'on'
 set -g @resurrect-dir {{ packages_tmux_resurrect_dir }}
 
 set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @continuum-boot 'on'
 set -g @continuum-restore 'on'
 
 run '{{ packages_tmux_plugins_dir }}/tpm/tpm'

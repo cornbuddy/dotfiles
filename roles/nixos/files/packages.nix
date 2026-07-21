@@ -13,7 +13,7 @@ in
   programs.niri.enable = true;
   programs.waybar.enable = true;
   programs.fish.enable = true;
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with unstable; [
     tuigreet
     alacritty
     fuzzel
@@ -44,6 +44,7 @@ in
     enable = true;
     xkb.options = "ctrl:swapcaps";
   };
+
   services.greetd = {
     enable = true;
     settings = {
@@ -53,8 +54,26 @@ in
       };
     };
   };
+  systemd.services.greetd = {
+    unitConfig = {
+      # Wait for basic multi-user setup to finish before launching the greeter
+      After = lib.mkOverride 0 [ "multi-user.target" ];
+    };
+    serviceConfig = {
+      # Idle out systemd startup messages so they don't overlay tuigreet
+      Type = "idle";
+    };
+  };
 
-  virtualisation.docker.enable = true;
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  }
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 }
