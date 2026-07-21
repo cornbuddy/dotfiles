@@ -1,14 +1,14 @@
 ---
 packages_nix_flakes: true
 
-packages_waybar_config_dir: "{{ lookup('env', 'HOME') }}/.config/waybar"
+packages_xdg_config: "{{ lookup('env', 'HOME') }}/.config"
 
 packages_go_install:
   - github.com/juev/hledger-lsp/cmd/hledger-lsp@latest
 
-packages_alacritty_config_dir: "{{ lookup('env', 'HOME') }}/.config/alacritty"
+packages_alacritty_config_dir: "{{ packages_xdg_config }}//alacritty"
 
-packages_fish_config_dir: "{{ lookup('env', 'HOME') }}/.config/fish"
+packages_fish_config_dir: "{{ packages_xdg_config }}/fish"
 packages_fish_go_path: "{{ ansible_env.HOME }}/go"
 packages_fish_local_bin_path: "{{ ansible_env.HOME }}/.local/bin"
 packages_nix_daemon: >-

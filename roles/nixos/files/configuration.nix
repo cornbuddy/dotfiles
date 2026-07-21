@@ -15,22 +15,22 @@
     font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz";
     packages = with pkgs; [ terminus_font ];
     colors = [
-      "3b4252" # Color  0: Polar Night (Black)
-      "bf616a" # Color  1: Aurora (Red)
-      "a3be8c" # Color  2: Aurora (Green)
-      "ebcb8b" # Color  3: Aurora (Yellow)
-      "81a1c1" # Color  4: Frost (Blue)
-      "b48ead" # Color  5: Aurora (Purple)
-      "88c0d0" # Color  6: Frost (Cyan)
-      "e5e9f0" # Color  7: Snow Storm (White)
-      "4c566a" # Color  8: Polar Night (Bright Black)
-      "bf616a" # Color  9: Aurora (Bright Red)
-      "a3be8c" # Color 10: Aurora (Bright Green)
-      "ebcb8b" # Color 11: Aurora (Bright Yellow)
-      "81a1c1" # Color 12: Frost (Bright Blue)
-      "b48ead" # Color 13: Aurora (Bright Purple)
-      "8fbcbb" # Color 14: Frost (Bright Cyan)
-      "eceff4" # Color 15: Snow Storm (Bright White)
+      "3b4252"
+      "bf616a"
+      "a3be8c"
+      "ebcb8b"
+      "81a1c1"
+      "b48ead"
+      "88c0d0"
+      "e5e9f0"
+      "4c566a"
+      "bf616a"
+      "a3be8c"
+      "ebcb8b"
+      "81a1c1"
+      "b48ead"
+      "8fbcbb"
+      "eceff4"
     ];
   };
 
@@ -62,9 +62,10 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
-  services.logind.lidSwitch = "lock";
+  services.upower.enable = true;
   services.logind.settings.Login = {
     HandlePowerKey = "ignore";
+    HandleLidSwitch = "lock";
   };
 
   users.users.cornbuddy = {

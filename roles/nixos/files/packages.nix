@@ -11,7 +11,6 @@ in
   nixpkgs.config.allowUnfree = true;
 
   programs.niri.enable = true;
-  programs.waybar.enable = true;
   programs.fish.enable = true;
   environment.systemPackages = with unstable; [
     tuigreet
@@ -22,6 +21,8 @@ in
     swayidle
     firefox
     telegram-desktop
+    waybar
+    pavucontrol
   ];
 
   security.sudo-rs = {
@@ -32,6 +33,7 @@ in
   security.polkit.enable = true;
   security.pam.services.swaylock = {};
 
+  services.upower.enable = true;
   services.power-profiles-daemon.enable = true;
   services.openssh.enable = true;
   services.pipewire = {
@@ -54,26 +56,8 @@ in
       };
     };
   };
-  systemd.services.greetd = {
-    unitConfig = {
-      # Wait for basic multi-user setup to finish before launching the greeter
-      After = lib.mkOverride 0 [ "multi-user.target" ];
-    };
-    serviceConfig = {
-      # Idle out systemd startup messages so they don't overlay tuigreet
-      Type = "idle";
-    };
-  };
-
-  virtualisation = {
-    containers.enable = true;
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      # Required for containers under podman-compose to be able to talk to each other.
-      defaultNetwork.settings.dns_enabled = true;
-    };
-  }
+  # hide kernel messages to print nice tui
+  boot.kernelParams = [ "quiet" "loglevel=3" ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 }
