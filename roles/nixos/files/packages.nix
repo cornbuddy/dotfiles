@@ -15,13 +15,8 @@ in
   environment.systemPackages = with unstable; [
     tuigreet
     alacritty
-    fuzzel
-    swaylock
-    mako
-    swayidle
     firefox
     telegram-desktop
-    waybar
     pavucontrol
   ];
 

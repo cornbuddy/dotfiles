@@ -16,6 +16,12 @@
           name = "toolbox";
           pathsToLink = [ "/bin" "/share" ];
           paths = with pkgs; [
+            # wm
+            waybar
+            fuzzel
+            swaylock
+            mako
+            swayidle
             # development
             bun
             luaPackages.tree-sitter-cli
