@@ -3,16 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in {
-        # Define the package output
-        packages.default = pkgs.buildEnv {
+  outputs = { self, nixpkgs }:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      packages.${system} = rec {
+        # Define your bundled package group
+        default = pkgs.buildEnv {
           name = "toolbox";
           pathsToLink = [ "/bin" "/share" ];
           paths = with pkgs; [
@@ -22,7 +22,9 @@
             swaylock
             mako
             swayidle
+            lm_sensors
             # development
+            nixd
             bun
             luaPackages.tree-sitter-cli
             neovim
@@ -90,6 +92,6 @@
             hledger-fmt
           ];
         };
-      }
-    );
+      };
+    };
 }
