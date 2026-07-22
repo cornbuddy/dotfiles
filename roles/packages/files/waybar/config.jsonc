@@ -11,9 +11,7 @@
     "./modules/logout.jsonc",
     "./modules/storage.jsonc",
     "./modules/system.jsonc",
-    "./modules/power-profiles-daemon.jsonc",
     "./modules/workspace.jsonc",
-    "./modules/idle-ihibitor.jsonc",
     "./modules/audio.jsonc",
     "./modules/connections.jsonc",
     "./modules/battery.jsonc",
@@ -21,16 +19,13 @@
     "./modules/tray-notif.jsonc"
   ],
   "modules-left": [
-    "group/storage"
-  ],
-  "modules-center": [
-    "niri/workspaces",
-    "idle_inhibitor"
+    "niri/workspaces"
   ],
   "modules-right": [
     "group/audio",
     "group/connections",
     "group/system",
+    "group/storage",
     "battery",
     "clock",
     "group/logout-group",

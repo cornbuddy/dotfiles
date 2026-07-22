@@ -1,11 +1,12 @@
 ---
-- name: Enable flake
+- name: Add nix profile
   ansible.builtin.shell: |-
     {% if ansible_distribution != 'NixOS' %}
     . {{ packages_nix_daemon }}.sh
     {% endif %}
 
-    nix flake update
     nix profile add --show-trace {{ packages_nix_flake_path }}#default
+    nix flake update
+    nix profile upgrade --all
     nix-collect-garbage
   when: packages_nix_flake_path is defined

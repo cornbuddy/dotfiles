@@ -14,15 +14,15 @@
   "group/storage": {
     "orientation": "horizontal",
     "modules": [
-      "disk",
-      "memory"
+      "disk"
     ]
   },
   "group/system": {
     "orientation": "horizontal",
     "modules": [
       "temperature",
-      "cpu"
+      "cpu",
+      "memory"
     ]
   },
   "group/audio": {
@@ -39,13 +39,8 @@
   },
   "group/connections": {
     "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": false
-    },
     "modules": [
-      "network",
-      "bluetooth"
+      "network"
     ]
   },
   "group/tray-group": {
