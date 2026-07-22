@@ -16,5 +16,5 @@
       when: ansible_distribution == 'Ubuntu'
 
     - role: nixos
-      tags: distro
+      tags: [distro, nix]
       when: ansible_distribution == 'NixOS'

@@ -1,18 +1,18 @@
 ---
 packages_nix_flakes: true
+packages_nix_daemon: >-
+  /nix/var/nix/profiles/default/etc/profile.d/nix-daemon
 
 packages_xdg_config: "{{ lookup('env', 'HOME') }}/.config"
 
 packages_go_install:
   - github.com/juev/hledger-lsp/cmd/hledger-lsp@latest
 
-packages_alacritty_config_dir: "{{ packages_xdg_config }}//alacritty"
+packages_alacritty_config_dir: "{{ packages_xdg_config }}/alacritty"
 
 packages_fish_config_dir: "{{ packages_xdg_config }}/fish"
 packages_fish_go_path: "{{ ansible_env.HOME }}/go"
 packages_fish_local_bin_path: "{{ ansible_env.HOME }}/.local/bin"
-packages_nix_daemon: >-
-  /nix/var/nix/profiles/default/etc/profile.d/nix-daemon
 packages_fish_fisher_plugins:
   - jorgebucaran/fisher
   - jorgebucaran/autopair.fish
@@ -51,6 +51,6 @@ packages_hledger_version: 1.51.2
 packages_hledger_repo: git@github.com:cornbuddy/finances.git
 packages_hledger_path: "{{ ansible_env.HOME }}/code/finances"
 
-packages_fonts_install: false
+packages_fonts_force_checkout: false
 packages_fonts_url: https://github.com/ryanoasis/nerd-fonts.git
 packages_fonts_dir: "{{ ansible_env.HOME }}/.nerd-fonts"

@@ -11,7 +11,7 @@
     version: master
     depth: 1
   when: >-
-    (packages_fonts_install | bool)
+    (packages_fonts_force_checkout | bool)
     or not fonts.stat.exists
 
 - name: Install fonts

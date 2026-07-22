@@ -1,9 +1,21 @@
 {
-  "disk": {
+  "disk#root": {
     "tooltip": true,
     "tooltip-format": "{used} used out of {total} on \"{path}\"",
     "interval": 60,
-    "format": "󱙋 {percentage_used}%",
+    "format": " {percentage_used}%",
+    "path": "/",
+    "states": {
+      "warning": 60,
+      "critical": 90
+    }
+  },
+  "disk#boot": {
+    "tooltip": true,
+    "tooltip-format": "{used} used out of {total} on \"{path}\"",
+    "interval": 60,
+    "format": " {percentage_used}%",
+    "path": "/boot",
     "states": {
       "warning": 60,
       "critical": 90

@@ -14,7 +14,8 @@
   "group/storage": {
     "orientation": "horizontal",
     "modules": [
-      "disk"
+      "disk#boot",
+      "disk#root"
     ]
   },
   "group/system": {

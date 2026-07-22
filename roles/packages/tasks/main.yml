@@ -12,6 +12,16 @@
   tags: nix
   when: packages_nix_flake_path is defined
 
+- name: Make symlinks
+  ansible.builtin.include_tasks: link.yml
+  loop:
+    - name: niri
+      path: "{{ packages_xdg_config }}/niri"
+    - name: waybar
+      path: "{{ packages_xdg_config }}/waybar"
+  loop_control:
+    loop_var: app
+
 - name: Configure software
   # I cannot use loops with import_tasks
   ansible.builtin.include_tasks: "{{ file }}.yml"
@@ -22,10 +32,7 @@
     - go
     - fonts
     - hledger
-    - niri
     - nvim
     - tmux
-    - waybar
-  tags: [waybar, niri]
   loop_control:
     loop_var: file
