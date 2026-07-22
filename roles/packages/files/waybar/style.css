@@ -16,4 +16,5 @@
 
 window#waybar {
   background: transparent;
+  color: @on_background;
 }

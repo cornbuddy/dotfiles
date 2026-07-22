@@ -1,4 +1,11 @@
 {
+  "group/niri": {
+    "orientation": "horizontal",
+    "modules": [
+      "niri/workspaces",
+      "niri/window"
+    ]
+  },
   "group/logout-group": {
     "orientation": "horizontal",
     "drawer": {

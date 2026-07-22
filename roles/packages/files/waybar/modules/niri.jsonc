@@ -1,0 +1,7 @@
+{
+  "niri/workspaces": {
+    "display-condition": "keep-named",
+    "hide-empty": true
+  },
+  "niri/window": {}
+}

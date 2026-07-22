@@ -17,8 +17,8 @@
     "tooltip-format-wifi": "󱄙  {essid} ({signalStrength}%)\n\n󰐻  Freq: {frequency}GHz\n  {bandwidthDownBytes}   {bandwidthUpBytes}",
     "tooltip-format-ethernet": "󰈀  {ifname} (Connected)\n  {bandwidthDownBytes}   {bandwidthUpBytes}",
     "tooltip-format-linked": "󱘖 {ifname}: No IP Address",
-    "on-click": "alacritty --option='window.startup_mode=\"Windowed\"' --command nmtui",
-    "on-click-right": "pkill nm-applet",
+    "on-click": "alacritty --title nmtui --option='window.startup_mode=\"Windowed\"' --command nmtui",
+    "on-click-right": "nm-connection-editor",
     "on-scroll-up": "nmcli radio wifi on",
     "on-scroll-down": "nmcli radio wifi off"
   }

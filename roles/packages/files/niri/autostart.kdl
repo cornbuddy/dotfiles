@@ -1,2 +1,4 @@
+spawn-at-startup "firefox"
 spawn-at-startup "waybar"
-spawn-at-startup "nm-applet --indicator"
+// I want tmux terminal to run after firefox, to make it spawn the right side
+spawn-sh-at-startup "sleep 5 && alacritty --title tmux --command tmux a -t `tmux ls -F \"#{session_name}\" | head -n1`"

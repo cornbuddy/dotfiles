@@ -7,19 +7,19 @@
   "height": 42,
   "spacing": 6,
   "include": [
-    "./modules/groups.jsonc",
-    "./modules/logout.jsonc",
-    "./modules/storage.jsonc",
-    "./modules/system.jsonc",
-    "./modules/workspace.jsonc",
     "./modules/audio.jsonc",
-    "./modules/connections.jsonc",
     "./modules/battery.jsonc",
     "./modules/clock.jsonc",
+    "./modules/connections.jsonc",
+    "./modules/groups.jsonc",
+    "./modules/logout.jsonc",
+    "./modules/niri.jsonc",
+    "./modules/storage.jsonc",
+    "./modules/system.jsonc",
     "./modules/tray-notif.jsonc"
   ],
   "modules-left": [
-    "niri/workspaces"
+    "group/niri"
   ],
   "modules-right": [
     "group/audio",
