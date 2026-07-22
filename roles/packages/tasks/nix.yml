@@ -5,6 +5,7 @@
     . {{ packages_nix_daemon }}.sh
     {% endif %}
 
-    nix profile add --show-trace {{ packages_nix_flake_path }}
+    nix flake update
+    nix profile add --show-trace {{ packages_nix_flake_path }}#default
     nix-collect-garbage
   when: packages_nix_flake_path is defined

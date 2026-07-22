@@ -10,11 +10,9 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      packages.${system} = rec {
-        # Define your bundled package group
-        default = pkgs.buildEnv {
+      packages.${system}.default = pkgs.buildEnv {
           name = "toolbox";
-          pathsToLink = [ "/bin" "/share" ];
+          ignoreCollisions = true;
           paths = with pkgs; [
             # wm
             waybar
@@ -93,5 +91,4 @@
           ];
         };
       };
-    };
 }
