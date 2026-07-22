@@ -1,0 +1,7 @@
+---
+- name: Configure niri
+  ansible.posix.synchronize:
+    src: niri
+    # trailing slash is important
+    dest: "{{ packages_xdg_config }}/"
+  tags: niri

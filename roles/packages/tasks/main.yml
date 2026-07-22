@@ -1,7 +1,16 @@
 ---
-- name: Install nix
-  ansible.builtin.import_tasks: nix.yml
+- name: Add nix profile
+  ansible.builtin.shell: |-
+    {% if ansible_distribution != 'NixOS' %}
+    . {{ packages_nix_daemon }}.sh
+    {% endif %}
+
+    nix profile add --show-trace {{ packages_nix_flake_path }}#default
+    nix flake update
+    nix profile upgrade --all
+    nix-collect-garbage
   tags: nix
+  when: packages_nix_flake_path is defined
 
 - name: Configure software
   # I cannot use loops with import_tasks
@@ -13,9 +22,10 @@
     - go
     - fonts
     - hledger
+    - niri
     - nvim
     - tmux
     - waybar
-  tags: waybar
+  tags: [waybar, niri]
   loop_control:
     loop_var: file
