@@ -21,8 +21,7 @@
     "./modules/tray-notif.jsonc"
   ],
   "modules-left": [
-    "group/storage",
-    "group/system"
+    "group/storage"
   ],
   "modules-center": [
     "niri/workspaces",
@@ -31,7 +30,7 @@
   "modules-right": [
     "group/audio",
     "group/connections",
-    "power-profiles-daemon",
+    "group/system",
     "battery",
     "clock",
     "group/logout-group",

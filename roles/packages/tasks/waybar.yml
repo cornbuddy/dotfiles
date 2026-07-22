@@ -5,3 +5,5 @@
     # trailing slash is important
     dest: "{{ packages_xdg_config }}/"
   tags: waybar
+  notify:
+    - Restart waybar

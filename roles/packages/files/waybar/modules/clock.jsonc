@@ -1,6 +1,6 @@
 {
   "clock": {
-    "format": "󰃱  {0:%d.%m.%Y}    {0:%H:%M} ",
+    "format": "󰃱 {0:%d.%m.%Y}   {0:%H:%M} ",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "on-click": "xdg-open https://calendar.google.com"
   }
