@@ -9,6 +9,10 @@ indent_size = 2
 trim_trailing_whitespace = true
 max_line_length = 80
 
+[*.lua]
+indent_size = 2
+max_line_length = 100
+
 [*.fish.j2]
 indent_size = 4
 

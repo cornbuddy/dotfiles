@@ -1,4 +1,6 @@
 ---
 - name: Install go packages
   ansible.builtin.command: "go install {{ item }}"
+  register: cmd
+  changed_when: cmd.msg != ""
   loop: "{{ packages_go_install }}"

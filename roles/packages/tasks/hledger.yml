@@ -9,9 +9,3 @@
     repo: "{{ packages_hledger_repo }}"
     version: main
     accept_hostkey: true
-
-- name: Link main journal to default location
-  ansible.builtin.file:
-    src: "{{ packages_hledger_path }}/main.journal"
-    dest: "{{ ansible_env.HOME }}/.hledger.journal"
-    state: link

@@ -36,7 +36,6 @@
       | source
       && fisher install jorgebucaran/fisher
     executable: fish
-  changed_when: false
 
 - name: Configure fisher
   ansible.builtin.template:
@@ -53,4 +52,3 @@
   ansible.builtin.shell:
     cmd: fisher update
     executable: fish
-  changed_when: false
