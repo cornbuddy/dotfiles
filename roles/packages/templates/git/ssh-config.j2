@@ -1,5 +1,7 @@
 {{ ansible_managed | comment }}
 
+Include {{ packages_git_ssh_config_dir }}/*
+
 Host github.com
   User git
   Hostname github.com

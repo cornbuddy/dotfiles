@@ -5,10 +5,13 @@
     . {{ packages_nix_daemon }}.sh
     {% endif %}
 
-    nix profile add --show-trace {{ packages_nix_flake_path }}#default
+    set -euo pipefail
+    nix profile add --show-trace .#default
     nix flake update
     nix profile upgrade --all
     nix-collect-garbage
+  args:
+    chdir: "{{ packages_nix_flake_path }}"
   tags: nix
   when: packages_nix_flake_path is defined
 

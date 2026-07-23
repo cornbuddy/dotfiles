@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = { nixpkgs }:
+  outputs = { self, nixpkgs }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -24,6 +24,7 @@
             networkmanagerapplet
             swaynotificationcenter
             # development
+            devenv
             nixd
             bun
             luaPackages.tree-sitter-cli
