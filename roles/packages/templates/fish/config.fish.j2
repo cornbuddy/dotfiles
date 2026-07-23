@@ -31,3 +31,8 @@ bind -M insert \cf accept-autosuggestion
 if test -e "{{ packages_nix_daemon }}.fish"
     source "{{ packages_nix_daemon }}.fish"
 end
+
+# enable devenv
+if type -q devenv
+    devenv hook fish | source
+end

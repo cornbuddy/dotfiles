@@ -26,6 +26,7 @@
             # development
             devenv
             nixd
+            alejandra
             bun
             luaPackages.tree-sitter-cli
             neovim

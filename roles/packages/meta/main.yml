@@ -3,5 +3,6 @@ dependencies:
   - role: danielrolls.nix
     vars:
       flakes: "{{ packages_nix_flakes }}"
+      config: "trusted-users = root {{ ansible_env.USER }}"
     become: true
     when: ansible_distribution != 'NixOS'

@@ -6,22 +6,22 @@ vim.diagnostic.config({
 -- after the language server attaches to the current buffer
 local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
-    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
+    vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
   end
-  nmap('<leader>rn', vim.lsp.buf.rename, '[r]e[n]ame')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction')
-  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols,
-    '[d]ocument [s]ymbols')
-  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols,
-    '[w]orkspace [s]ymbols')
-  nmap('gd', vim.lsp.buf.definition, "[g]o to [d]efinition")
-  nmap('gi', vim.lsp.buf.implementation, "[g]o to [i]mplementation")
-  nmap('gr', require("telescope.builtin").lsp_references, "[g]o to [r]eferences")
-  nmap('K', vim.lsp.buf.hover, "hover documentation")
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'signature documentation')
+  nmap("<leader>rn", vim.lsp.buf.rename, "[r]e[n]ame")
+  nmap("<leader>ca", vim.lsp.buf.code_action, "[c]ode [a]ction")
+  nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols,
+    "[d]ocument [s]ymbols")
+  nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols,
+    "[w]orkspace [s]ymbols")
+  nmap("gd", vim.lsp.buf.definition, "[g]o to [d]efinition")
+  nmap("gi", vim.lsp.buf.implementation, "[g]o to [i]mplementation")
+  nmap("gr", require("telescope.builtin").lsp_references, "[g]o to [r]eferences")
+  nmap("K", vim.lsp.buf.hover, "hover documentation")
+  nmap("<C-k>", vim.lsp.buf.signature_help, "signature documentation")
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local language_servers = {
   "ansiblels",
@@ -69,6 +69,34 @@ local function merge(t1, t2)
   end
   return t1
 end
+
+vim.lsp.config("nixd", merge(lsp_setup, {
+  cmd = { "nixd" },
+  filetypes = { "nix" },
+  root_markers = { "flake.nix", ".git" },
+  settings = {
+    nixd = {
+      nixpkgs = {
+        -- For flake.
+        -- This expression will be interpreted as "nixpkgs" toplevel
+        -- Nixd provides package, lib completion/information from it.
+        -- Resource Usage: Entries are lazily evaluated, entire nixpkgs takes 200~300MB for just "names".
+        -- Package documentation, versions, are evaluated by-need.
+        expr = "import (builtins.getFlake(toString ./.)).inputs.nixpkgs { }",
+      },
+      formatting = {
+        command = { "alejandra" }, -- or nixfmt or nixpkgs-fmt
+      },
+      options = {
+        nixos = {
+          expr =
+          "let flake = builtins.getFlake(toString ./.); in flake.nixosConfigurations.nz.options",
+        },
+      },
+    },
+  },
+}))
+vim.lsp.enable("nixd")
 
 vim.lsp.config("hledger_lsp", merge(lsp_setup, {
   cmd = { "hledger-lsp" },
