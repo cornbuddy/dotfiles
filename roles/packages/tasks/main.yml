@@ -1,19 +1,11 @@
 ---
-- name: Add nix profile
-  ansible.builtin.shell: |-
-    {% if ansible_distribution != 'NixOS' %}
-    . {{ packages_nix_daemon }}.sh
-    {% endif %}
-
-    set -euo pipefail
-    nix profile add --show-trace .#default
-    nix flake update
-    nix profile upgrade --all
-    nix-collect-garbage
+- name: Activate home
+  ansible.builtin.shell: >-
+    nix run github:nix-community/home-manager
+    -- switch --flake .#{{ ansible_env.USER }}
   args:
-    chdir: "{{ packages_nix_flake_path }}"
-  tags: nix
-  when: packages_nix_flake_path is defined
+    chdir: "{{ role_path }}/files/home-manager"
+  tags: home-manager
 
 - name: Configure software
   # I cannot use loops with import_tasks
