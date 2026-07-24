@@ -1,5 +1,5 @@
 ---
-- name: Ensure fonst directory exists
+- name: Ensure fonts directory exists
   ansible.builtin.stat:
     path: "{{ packages_fonts_dir }}"
   register: fonts
