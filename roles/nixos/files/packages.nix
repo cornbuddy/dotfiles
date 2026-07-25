@@ -1,13 +1,14 @@
 # here live installed packages and their configurations
-
-{ config, pkgs, ... }:
-
-let
-  unstable = import
-    (fetchTarball "https://github.com/nixos/nixpkgs/tarball/nixos-unstable")
-    { config = config.nixpkgs.config; };
-in
 {
+  config,
+  pkgs,
+  ...
+}: let
+  unstable =
+    import
+    (fetchTarball "https://github.com/nixos/nixpkgs/tarball/nixos-unstable")
+    {config = config.nixpkgs.config;};
+in {
   nixpkgs.config.allowUnfree = true;
 
   programs.niri.enable = true;
@@ -15,7 +16,7 @@ in
   environment.systemPackages = with unstable; [
     tuigreet
     alacritty
-    firefox
+    firefox-bin
     telegram-desktop
     pavucontrol
   ];
@@ -46,13 +47,20 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --remember --remember-user-session --time --cmd niri-session";
-	      user = "greeter";
+        command = ''
+          ${pkgs.tuigreet}/bin/tuigreet \
+          --asterisks \
+          --remember \
+          --remember-user-session \
+          --time \
+          --cmd niri-session
+        '';
+        user = "greeter";
       };
     };
   };
   # hide kernel messages to print nice tui
-  boot.kernelParams = [ "quiet" "loglevel=3" ];
+  boot.kernelParams = ["quiet" "loglevel=3"];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 }

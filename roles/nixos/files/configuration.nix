@@ -1,19 +1,19 @@
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./nvidia-disable.nix
-      ./packages.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+    ./packages.nix
+  ];
 
   system.stateVersion = "26.05";
 
   console = {
     earlySetup = true;
     font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz";
-    packages = with pkgs; [ terminus_font ];
+    packages = with pkgs; [terminus_font];
     colors = [
       "3b4252"
       "bf616a"
@@ -34,10 +34,11 @@
     ];
   };
 
-  hardware.enableAllFirmware  = true;
+  hardware.graphics.enable = true;
+  hardware.enableAllFirmware = true;
   security.rtkit.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.auto-optimise-store = true;
   nix.gc.automatic = true;
   nix.gc.dates = "daily";
@@ -46,7 +47,7 @@
   networking.firewall.enable = false;
   networking.hostName = "workstation";
   networking.networkmanager.enable = true;
-  networking.networkmanager.insertNameservers = [ "1.1.1.1" "1.0.0.1" ];
+  networking.networkmanager.insertNameservers = ["1.1.1.1" "1.0.0.1"];
 
   time.timeZone = "Europe/Minsk";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -72,7 +73,7 @@
     shell = pkgs.fish;
     isNormalUser = true;
     description = "cornbuddy";
-    extraGroups = [ "networkmanager" "wheel" "input" "docker" "audio" ];
+    extraGroups = ["networkmanager" "wheel" "input" "docker" "audio"];
   };
 
   boot.loader.systemd-boot.enable = true;

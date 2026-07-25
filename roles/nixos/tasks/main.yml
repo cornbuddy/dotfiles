@@ -9,7 +9,5 @@
   loop:
     - src: packages.nix
       dest: "{{ nixos_config_directory }}/packages.nix"
-    - src: nvidia-disable.nix
-      dest: "{{ nixos_config_directory }}/nvidia-disable.nix"
     - src: configuration.nix
       dest: "{{ nixos_config_directory }}/configuration.nix"

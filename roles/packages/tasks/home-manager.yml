@@ -1,0 +1,30 @@
+---
+- name: Check if home-manager is installed
+  ansible.builtin.command: which home-manager
+  register: which
+  ignore_errors: true
+  changed_when: false
+
+- name: Use pre-installed home-manager
+  ansible.builtin.set_fact:
+    home_manager: home-manager
+  when: which.rc == 0
+
+- name: Download home-manager
+  ansible.builtin.set_fact:
+    home_manager: "nix run github:nix-community/home-manager --"
+  when: which.rc != 0
+
+- name: Symlink home-manager directory to default location
+  ansible.builtin.import_tasks: link.yml
+  vars:
+    app:
+      name: home-manager
+      path: "{{ packages_nix_home_manager_config_dir }}"
+
+- name: Activate home
+  ansible.builtin.shell: |-
+    git add .
+    {{ home_manager }} switch --show-trace --flake .#{{ ansible_env.USER }}
+  args:
+    chdir: "{{ role_path }}/files/home-manager"

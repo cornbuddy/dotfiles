@@ -1,10 +1,6 @@
 ---
-- name: Activate home
-  ansible.builtin.shell: >-
-    nix run github:nix-community/home-manager
-    -- switch --flake .#{{ ansible_env.USER }}
-  args:
-    chdir: "{{ role_path }}/files/home-manager"
+- name: Setup home manager
+  ansible.builtin.import_tasks: home-manager.yml
   tags: home-manager
 
 - name: Configure software
