@@ -1,6 +1,0 @@
----
-- name: Update font cache
-  ansible.builtin.command: fc-cache -fv
-
-- name: Restart waybar
-  ansible.builtin.command: pkill -12 waybar

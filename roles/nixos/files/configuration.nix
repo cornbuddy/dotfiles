@@ -45,7 +45,7 @@
   nix.gc.options = "--delete-older-than 3d";
 
   networking.firewall.enable = false;
-  networking.hostName = "workstation";
+  networking.hostName = "homelab";
   networking.networkmanager.enable = true;
   networking.networkmanager.insertNameservers = ["1.1.1.1" "1.0.0.1"];
 

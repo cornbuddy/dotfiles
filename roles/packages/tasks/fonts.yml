@@ -18,5 +18,6 @@
   ansible.builtin.shell: ./install.sh
   args:
     chdir: "{{ packages_fonts_dir }}"
-  notify:
-    - Update font cache
+
+- name: Update font cache
+  ansible.builtin.command: fc-cache -fv
