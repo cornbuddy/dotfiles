@@ -27,6 +27,7 @@
         swaynotificationcenter
         noctalia-shell
         # development
+        gcc
         devenv
         nixd
         alejandra

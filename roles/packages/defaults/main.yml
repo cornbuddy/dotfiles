@@ -1,5 +1,6 @@
 ---
 packages_nix_flakes: true
+packages_nix_profile_bin: "{{ lookup('env', 'HOME') }}/.nix-profile/bin"
 packages_nix_daemon: >-
   /nix/var/nix/profiles/default/etc/profile.d/nix-daemon
 

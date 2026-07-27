@@ -5,7 +5,7 @@
     . {{ packages_nix_daemon }}.sh
     {% endif %}
 
-    set -euo pipefail
+    set -eu
     git add .
     nix profile add --show-trace .#default
     nix flake update

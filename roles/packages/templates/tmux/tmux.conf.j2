@@ -49,4 +49,4 @@ set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @continuum-boot 'on'
 set -g @continuum-restore 'on'
 
-run '{{ packages_tmux_plugins_dir }}/tpm/tpm'
+run -b '{{ packages_tmux_plugins_dir }}/tpm/tpm'
