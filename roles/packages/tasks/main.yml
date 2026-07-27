@@ -1,7 +1,7 @@
 ---
-- name: Setup home manager
-  ansible.builtin.import_tasks: home-manager.yml
-  tags: home-manager
+- name: Setup nix flake
+  ansible.builtin.import_tasks: flake.yml
+  tags: nix
 
 - name: Configure software
   # I cannot use loops with import_tasks

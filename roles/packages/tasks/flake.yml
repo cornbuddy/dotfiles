@@ -1,0 +1,15 @@
+---
+- name: Activate flake
+  ansible.builtin.shell: |-
+    {% if ansible_distribution != 'NixOS' %}
+    . {{ packages_nix_daemon }}.sh
+    {% endif %}
+
+    set -euo pipefail
+    git add .
+    nix profile add --show-trace .#default
+    nix flake update
+    nix profile upgrade --all
+    nix-collect-garbage
+  args:
+    chdir: "{{ role_path }}/files/flake"

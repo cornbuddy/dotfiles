@@ -3,12 +3,6 @@ packages_nix_flakes: true
 packages_nix_daemon: >-
   /nix/var/nix/profiles/default/etc/profile.d/nix-daemon
 
-packages_nix_home_manager_config_dir: "{{ packages_xdg_config }}/home-manager"
-packages_nix_home_manager_profile: >-
-  {{ lookup('env', 'HOME') }}/.nix-profile/etc/profile.d/hm-session-vars.sh
-packages_nix_home_manager_channel: >-
-  https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz
-
 packages_xdg_config: "{{ lookup('env', 'HOME') }}/.config"
 
 packages_go_install:
