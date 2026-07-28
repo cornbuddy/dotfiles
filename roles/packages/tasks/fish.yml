@@ -24,7 +24,7 @@
 - name: Make fish available as shells
   ansible.builtin.lineinfile:
     path: /etc/shells
-    line: "{{ packages_shell_bin }}"
+    line: "{{ packages_fish_bin }}"
   become: true
   when: ansible_distribution != 'NixOS'
 
