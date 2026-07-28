@@ -49,4 +49,6 @@ set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @continuum-boot 'on'
 set -g @continuum-restore 'on'
 
+# seems like tpm doesn't see the shell
+set-option -g default-shell {{ packages_fish_bin }}
 run -b '{{ packages_tmux_plugins_dir }}/tpm/tpm'

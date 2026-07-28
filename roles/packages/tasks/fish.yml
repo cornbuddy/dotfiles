@@ -24,7 +24,7 @@
 - name: Make fish available as shells
   ansible.builtin.lineinfile:
     path: /etc/shells
-    line: "{{ packages_nix_profile_bin }}/fish"
+    line: "{{ packages_shell_bin }}"
   become: true
   when: ansible_distribution != 'NixOS'
 
@@ -35,7 +35,7 @@
       https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish
       | source
       && fisher install jorgebucaran/fisher
-    executable: "{{ packages_nix_profile_bin }}/fish"
+    executable: "{{ packages_fish_bin }}"
 
 - name: Configure fisher
   ansible.builtin.template:
@@ -51,4 +51,4 @@
 - name: Sync fisher
   ansible.builtin.shell:
     cmd: fisher update
-    executable: "{{ packages_nix_profile_bin }}/fish"
+    executable: "{{ packages_fish_bin }}"

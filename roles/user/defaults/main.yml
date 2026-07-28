@@ -7,6 +7,7 @@ user_secondary_groups:
   - input
   - docker
   - audio
+  - sudo
 
 user_sudo_defaults: []
 user_sudo_privileges:
