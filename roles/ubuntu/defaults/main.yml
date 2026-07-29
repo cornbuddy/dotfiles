@@ -1,0 +1,5 @@
+---
+ubuntu_install_niri: true
+ubuntu_snap_packages:
+  - name: alacritty
+    classic: true

@@ -1,0 +1,13 @@
+---
+- name: Add niri repos
+  ansible.builtin.command: "add-apt-repository {{ item }}"
+  loop:
+    - ppa:avengemedia/danklinux
+  become: true
+
+- name: Install niri
+  ansible.builtin.apt:
+    pkg:
+      - niri
+    update_cache: true
+  become: true

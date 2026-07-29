@@ -30,6 +30,9 @@ bind-key r source-file {{ packages_tmux_config_path }} \; display-message "updat
 bind-key -T copy-mode-vi 'v' send -X begin-selection
 bind-key -T copy-mode-vi 'r' send -X rectangle-toggle
 
+# seems like tpm doesn't see the PATH
+set-option -g -a update-environment " PATH"
+
 # plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-battery'
@@ -49,6 +52,4 @@ set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @continuum-boot 'on'
 set -g @continuum-restore 'on'
 
-# seems like tpm doesn't see the shell
-set-option -g default-shell {{ packages_fish_bin }}
 run -b '{{ packages_tmux_plugins_dir }}/tpm/tpm'
