@@ -27,6 +27,7 @@
         swaynotificationcenter
         noctalia-shell
         # development
+        golangci-lint
         gcc
         devenv
         nixd

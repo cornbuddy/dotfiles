@@ -4,34 +4,34 @@ set -g history-limit 10000
 set -s escape-time 0
 set -g status-right-length 80
 set -g status-right "{{ packages_tmux_status_right }}"
-
-set-option -g default-terminal "screen-256color"
-set-option -g focus-events on
+set -g default-terminal "screen-256color"
+set -g focus-events on
 set-window-option -g mode-keys vi
 
-# start windows indexing from 1
+# start windows and panes indexing from 1
+set -g renumber-windows off
 set -g base-index 1
 set -g pane-base-index 1
 set-window-option -g pane-base-index 1
-set-option -g renumber-windows off
 
 # binds
 unbind C-b
 set -g prefix C-g
 bind C-g send-prefix
-bind-key h select-pane -L
-bind-key j select-pane -D
-bind-key k select-pane -U
-bind-key l select-pane -R
-bind-key g resize-pane -t 2 -x 90
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+bind g resize-pane -t 2 -x 90
 bind '"' split-window -v -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
-bind-key r source-file {{ packages_tmux_config_path }} \; display-message "updated"
-bind-key -T copy-mode-vi 'v' send -X begin-selection
-bind-key -T copy-mode-vi 'r' send -X rectangle-toggle
+bind r source-file {{ packages_tmux_config_path }} \; display-message "updated"
+bind -T copy-mode-vi 'v' send -X begin-selection
+bind -T copy-mode-vi 'r' send -X rectangle-toggle
 
-# seems like tpm doesn't see the PATH
-set-option -g -a update-environment " PATH"
+# tpm doesn't work well with fish installed by nix
+set -g -a update-environment " PATH"
+set -g default-shell {{ packages_fish_bin }}
 
 # plugins
 set -g @plugin 'tmux-plugins/tpm'
