@@ -22,7 +22,6 @@ Plug('levouh/tint.nvim')
 
 Plug('lewis6991/gitsigns.nvim')
 Plug('folke/todo-comments.nvim')
-Plug('gpanders/editorconfig.nvim')
 
 Plug('smoka7/hop.nvim', { ['tag'] = '*' })
 
