@@ -25,7 +25,6 @@
         lm_sensors
         networkmanagerapplet
         swaynotificationcenter
-        noctalia-shell
         # development
         golangci-lint
         gcc
@@ -73,9 +72,6 @@
         ccls
         # containers
         minikube
-        docker
-        docker-buildx
-        docker-compose
         kubernetes-helm
         kustomize
         fluxcd
