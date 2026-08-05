@@ -38,7 +38,6 @@ packages_git_github_identity_file: "{{ ansible_env.HOME }}/.ssh/github"
 
 packages_tmux_config_path: "{{ ansible_env.HOME }}/.tmux.conf"
 packages_tmux_plugins_dir: "{{ ansible_env.HOME }}/.tmux/plugins"
-packages_tmux_resurrect_dir: "{{ ansible_env.HOME }}/.tmux/resurrect"
 packages_tmux_gitmux_config_path: "{{ ansible_env.HOME }}/.gitmux.conf"
 packages_tmux_tpm_git_url: https://github.com/tmux-plugins/tpm
 packages_tmux_status_battery: >-
