@@ -70,8 +70,9 @@
         gopls
         helm-ls
         ccls
+        just-lsp
         # containers
-        minikube
+        kubectl
         kubernetes-helm
         kustomize
         fluxcd
@@ -90,10 +91,6 @@
         htop
         tree
         file
-        hledger
-        hledger-ui
-        hledger-web
-        hledger-fmt
       ];
     };
   };

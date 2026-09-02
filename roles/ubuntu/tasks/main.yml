@@ -26,6 +26,12 @@
     classic: "{{ item.classic | default(omit) }}"
   loop: "{{ ubuntu_snap_packages }}"
 
+- name: Upgrade packages
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: full
+  become: true
+
 - name: Install niri
   ansible.builtin.import_tasks: niri.yml
   when: ubuntu_install_niri | bool

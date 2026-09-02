@@ -36,6 +36,7 @@ local language_servers = {
   "helm_ls",
   "rust_analyzer",
   "templ",
+  "just",
 }
 
 require("mason").setup()
