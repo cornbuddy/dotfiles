@@ -1,20 +1,232 @@
-@import "tokens/colors.css";
-@import "tokens/state.css";
-@import "tokens/workspace.css";
-@import "tokens/widget.css";
-@import "tokens/batt-clock.css";
-@import "tokens/slider.css";
+@import "colors.css";
+
+#custom-tray-arrow.inhibited-none,
+#custom-tray-arrow.dnd-none,
+#battery.charging,
+#power-profiles-daemon.power-saver {
+  color: #a6e3a1;
+}
+
+#idle_inhibitor.activated,
+#cpu.warning,
+#disk.warning,
+#memory.warning,
+#battery.warning:not(.charging),
+#custom-tray-arrow.notification,
+#custom-tray-arrow.dnd-notification,
+#custom-tray-arrow.inhibited-notification {
+  color: #f9e2af;
+}
+
+#network.disabled,
+#cpu.critical,
+#disk.critical,
+#memory.critical,
+#temperature.critical,
+#battery.critical:not(.charging),
+#power-profiles-daemon.performance,
+#custom-tray-arrow.dnd-inhibited-none,
+#custom-tray-arrow.dnd-inhibited-notification {
+  color: #f38ba8;
+}
+
+/* do nothing on workspace hover */
+button:hover {
+  box-shadow: none; /* Remove predefined box-shadow */
+  text-shadow: none; /* Remove predefined text-shadow */
+  background: none; /* Remove predefined background color (white) */
+  transition: none; /* Disable predefined animations */
+}
+
+#workspaces {
+  margin: 0.25em 0.3125em;
+  padding: 0.375em 0.375em;
+  background-color: @surface_container;
+  border-radius: 1.25em;
+}
+
+#workspaces button {
+  min-width: 2em;
+  padding: 0em;
+  margin: 0 0.125em;
+  background: transparent;
+  border-radius: 1em;
+  color: @tertiary;
+}
+
+/* workaround to hide empty workspaces */
+#workspaces button#niri-workspace-5 {
+  background: None;
+  border: None;
+  font-size: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+#workspaces button.active {
+  padding: 0 0.75em;
+  background-color: @primary;
+  color: @on_primary;
+}
+
+#workspaces button.special {
+  color: @tertiary_fixed;
+}
+
+#workspaces button.urgent {
+  color: @error_container;
+}
+
+#logout-group {
+  margin: 0.25em 0.25em;
+  background-color: @surface_container;
+  border-radius: 1.25em;
+  color: @primary;
+}
+
+#custom-power {
+  color: @primary;
+  padding: 0.375em 0.75em 0.375em 0.625em;
+}
+
+#custom-power:hover {
+  color: @tertiary;
+}
+
+#custom-reboot {
+  color: @primary;
+  padding: 0 0.625em;
+}
+
+#custom-reboot:hover {
+  color: @tertiary;
+}
+
+#custom-lock {
+  color: @primary;
+  padding: 0 0.75em;
+}
+
+#custom-lock:hover {
+  color: @tertiary;
+}
+
+#power-profiles-daemon,
+#idle_inhibitor {
+  margin: 0.25em 0.3125em;
+  padding: 0.375em 0.9375em 0.375em 0.625em;
+  background-color: @surface_container;
+  border-radius: 1.25em;
+  color: @secondary_fixed_dim;
+}
+
+#audio,
+#connections,
+#system,
+#storage {
+  margin: 0.25em 0.3125em;
+  padding: 0.375em 0.375em;
+  background-color: @surface_container;
+  border-radius: 1.25em;
+  color: @secondary_fixed_dim;
+}
+
+#disk,
+#memory,
+#cpu,
+#temperature,
+#bluetooth {
+  margin-right: 0.125em;
+  padding: 0 0.5em;
+}
+
+#network {
+  padding: 0 0.625em 0 0.25em;
+}
+
+#pulseaudio {
+  margin-right: 0.75em;
+  margin-left: 0.5em;
+}
+
+#tray-group {
+  margin: 0.25em 0.3125em;
+  background-color: @surface_container;
+  border-radius: 1.25em;
+}
+
+#custom-tray-arrow {
+  padding: 0.375em 0.875em 0.375em 0.625em;
+  color: @primary;
+}
+
+#tray {
+  padding: 0.375em 0.625em;
+}
+
+#tray > .passive,
+#tray > .active,
+#tray > .needs-attention {
+  -gtk-icon-effect: none;
+}
+
+#battery {
+  margin: 0.25em 0.3125em;
+  padding: 0.375em 1em;
+  background-color: @surface_container;
+  border-radius: 1.25em;
+  color: @secondary_fixed_dim;
+}
+
+#clock {
+  margin: 0.25em 0.3125em;
+  padding: 0.375em 0.625em 0.375em 1em;
+  background-color: @surface_container;
+  border-radius: 1.25em;
+  color: @secondary_fixed_dim;
+}
+
+#pulseaudio-slider {
+  margin: 0.25em 0.3125em;
+  padding: 0 0.125em;
+  background-color: transparent;
+  border-radius: 1.25em;
+}
+
+#pulseaudio-slider trough {
+  min-height: 0.625em;
+  min-width: 5em;
+  border-radius: 0.625em;
+  background-color: @outline_variant;
+}
+
+#pulseaudio-slider highlight {
+  min-height: 0.625em;
+  border-radius: 0.625em;
+  background-color: @secondary_fixed_dim;
+}
+
+#pulseaudio-slider slider {
+  min-height: 0.75em;
+  min-width: 0.75em;
+  margin: -0.125em 0;
+  border-radius: 100%;
+  background-color: @primary;
+}
 
 * {
   margin: 0;
   padding: 0;
-  min-height: 0px;
+  min-height: 0;
   border: none;
   border-radius: 0;
   font-family: "JetBrainsMono Nerd Font";
+  font-size: 14px;
 }
 
 window#waybar {
   background: transparent;
   color: @on_background;
+  margin-top: 0.75em;
 }

@@ -49,7 +49,6 @@ packages_tmux_status_gitmux: >-
 packages_tmux_status_right: >-
   #H {{ packages_tmux_status_battery }} {{ packages_tmux_status_gitmux }}
 
-packages_hledger_version: 1.51.2
 packages_hledger_repo: git@github.com:cornbuddy/finances.git
 packages_hledger_path: "{{ ansible_env.HOME }}/code/finances"
 

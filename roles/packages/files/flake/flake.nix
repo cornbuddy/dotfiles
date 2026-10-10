@@ -25,6 +25,7 @@
         lm_sensors
         networkmanagerapplet
         swaynotificationcenter
+        wl-clipboard
         # development
         golangci-lint
         gcc
@@ -59,7 +60,6 @@
         pre-commit
         action-validator
         xsel
-        wl-clipboard
         # language servers
         rust-analyzer
         ansible-language-server
