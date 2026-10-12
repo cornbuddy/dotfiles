@@ -27,6 +27,7 @@
         swaynotificationcenter
         wl-clipboard
         # development
+        opencode
         golangci-lint
         gcc
         devenv
@@ -91,6 +92,7 @@
         htop
         tree
         file
+        dbeaver-bin
       ];
     };
   };
