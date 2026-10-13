@@ -1,21 +1,15 @@
 {
+  "group/language": {
+    "orientation": "horizontal",
+    "modules": [
+      "niri/language"
+    ]
+  },
   "group/niri": {
     "orientation": "horizontal",
     "modules": [
       "niri/workspaces",
       "niri/window"
-    ]
-  },
-  "group/logout-group": {
-    "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 200,
-      "transition-left-to-right": false
-    },
-    "modules": [
-      "custom/power",
-      "custom/reboot",
-      "custom/lock"
     ]
   },
   "group/storage": {
@@ -51,7 +45,7 @@
       "network"
     ]
   },
-  "group/tray-group": {
+  "group/tray": {
     "orientation": "horizontal",
     "drawer": {
       "transition-duration": 500,

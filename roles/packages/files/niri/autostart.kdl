@@ -1,6 +1,9 @@
-spawn-at-startup "firefox"
 spawn-at-startup "waybar"
-spawn-at-startup "Telegram"
-spawn-at-startup "telegram-desktop"
+
 spawn-at-startup "band-desktop --ozone-platform=wayland"
-spawn-sh-at-startup "alacritty --title zellij --command tmux a -t `tmux ls -F \"#{session_name}\" | head -n1`"
+spawn-at-startup "firefox"
+spawn-at-startup "telegram-desktop"
+spawn-at-startup "Telegram"
+
+spawn-at-startup "dbeaver"
+spawn-at-startup "alacritty --title zellij --command zellij --layout welcome"

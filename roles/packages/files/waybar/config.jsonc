@@ -1,7 +1,3 @@
-/*
- * @author Muhammad Haikal Hakim
- * @repository https://github.com/haikal-hakim/athena
- */
 {
   "layer": "top",
   "height": 42,
@@ -12,7 +8,7 @@
     "./modules/clock.jsonc",
     "./modules/connections.jsonc",
     "./modules/groups.jsonc",
-    "./modules/logout.jsonc",
+    "./modules/language.jsonc",
     "./modules/niri.jsonc",
     "./modules/storage.jsonc",
     "./modules/system.jsonc",
@@ -28,7 +24,7 @@
     "group/storage",
     "battery",
     "clock",
-    "group/logout-group",
-    "group/tray-group"
+    "group/language",
+    "group/tray"
   ]
 }

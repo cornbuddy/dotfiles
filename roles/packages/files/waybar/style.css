@@ -78,40 +78,6 @@ button:hover {
   color: @error_container;
 }
 
-#logout-group {
-  margin: 0.25em 0.25em;
-  background-color: @surface_container;
-  border-radius: 1.25em;
-  color: @primary;
-}
-
-#custom-power {
-  color: @primary;
-  padding: 0.375em 0.75em 0.375em 0.625em;
-}
-
-#custom-power:hover {
-  color: @tertiary;
-}
-
-#custom-reboot {
-  color: @primary;
-  padding: 0 0.625em;
-}
-
-#custom-reboot:hover {
-  color: @tertiary;
-}
-
-#custom-lock {
-  color: @primary;
-  padding: 0 0.75em;
-}
-
-#custom-lock:hover {
-  color: @tertiary;
-}
-
 #power-profiles-daemon,
 #idle_inhibitor {
   margin: 0.25em 0.3125em;
@@ -150,19 +116,16 @@ button:hover {
   margin-left: 0.5em;
 }
 
-#tray-group {
+#tray {
   margin: 0.25em 0.3125em;
   background-color: @surface_container;
   border-radius: 1.25em;
+  padding: 0.375em 0.625em;
 }
 
 #custom-tray-arrow {
   padding: 0.375em 0.875em 0.375em 0.625em;
   color: @primary;
-}
-
-#tray {
-  padding: 0.375em 0.625em;
 }
 
 #tray > .passive,

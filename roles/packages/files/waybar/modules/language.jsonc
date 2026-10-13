@@ -1,0 +1,7 @@
+{
+  "niri/language": {
+    "format": "{short}",
+    "tooltip": true,
+    "tooltip-format": "Layout: {long} ({short})"
+  }
+}

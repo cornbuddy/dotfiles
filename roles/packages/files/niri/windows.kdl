@@ -24,6 +24,7 @@ window-rule {
 
 window-rule {
     match title=r#"tmux|zellij"#
+    match app-id="DBeaver"
     open-maximized true
     open-on-workspace ""
 }
