@@ -7,7 +7,7 @@ unfocused_hollow = true
 
 [window]
 dynamic_padding = true
-startup_mode = "Fullscreen"
+startup_mode = "Windowed"
 opacity = 1
 dynamic_title = false
 
