@@ -40,7 +40,8 @@ window-rule {
 
 window-rule {
     match app-id=r#"telegram"#
-    open-maximized true
+    open-maximized false
+    open-focused false
     open-on-workspace "󰻞"
 }
 

@@ -38,10 +38,6 @@ in {
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  services.xserver = {
-    enable = true;
-    xkb.options = "ctrl:swapcaps";
-  };
 
   services.greetd = {
     enable = true;

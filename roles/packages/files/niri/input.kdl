@@ -1,0 +1,18 @@
+input {
+    keyboard {
+        xkb {
+            layout "us,ru,by"
+            options "ctrl:swapcaps,grp:win_space_toggle"
+        }
+
+        track-layout "window"
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    mouse {}
+}

@@ -1,5 +1,4 @@
 spawn-at-startup "firefox"
 spawn-at-startup "waybar"
 spawn-at-startup "Telegram"
-spawn-at-startup "kek"
 spawn-sh-at-startup "alacritty --title tmux --command tmux a -t `tmux ls -F \"#{session_name}\" | head -n1`"
