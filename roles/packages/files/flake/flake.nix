@@ -27,6 +27,7 @@
         swaynotificationcenter
         wl-clipboard
         # development
+        fzf
         zellij
         opencode
         golangci-lint

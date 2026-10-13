@@ -24,9 +24,11 @@
       path: "{{ packages_xdg_config }}/alacritty"
     - name: niri
       path: "{{ packages_xdg_config }}/niri"
-    - name: waybar
-      path: "{{ packages_xdg_config }}/waybar"
     - name: nvim
       path: "{{ packages_xdg_config }}/nvim"
+    - name: waybar
+      path: "{{ packages_xdg_config }}/waybar"
+    - name: zellij
+      path: "{{ packages_xdg_config }}/zellij"
   loop_control:
     loop_var: app

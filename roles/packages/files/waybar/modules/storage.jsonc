@@ -14,7 +14,7 @@
     "tooltip": true,
     "tooltip-format": "{used} used out of {total} on \"{path}\"",
     "interval": 60,
-    "format": " {percentage_used}%",
+    "format": " {percentage_used}%",
     "path": "/boot",
     "states": {
       "warning": 60,
