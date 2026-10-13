@@ -23,8 +23,9 @@
     "icon-size": 16,
     "spacing": 10,
     "show-passive-items": true,
+    "expand": false,
     "icons": {
-      "NetworkManager": false
+      "NetworkManager": true
     }
   }
 }
