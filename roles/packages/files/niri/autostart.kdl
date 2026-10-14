@@ -1,6 +1,6 @@
 spawn-at-startup "waybar"
 // spawn-sh-at-startup "alacritty --title zellij --command zellij --layout welcome"
-spawn-sh-at-startup "alacritty --option window.startup_mode=Fullscreen --title tmux --command tmux a -t `tmux ls -F \"#{session_name}\" | head -n1`"
+spawn-sh-at-startup "alacritty \"--option=window.startup_mode='Fullscreen'\" --title tmux --command tmux a -t `tmux ls -F \"#{session_name}\" | head -n1`"
 
 spawn-at-startup "firefox"
 spawn-at-startup "telegram-desktop"

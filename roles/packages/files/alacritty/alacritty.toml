@@ -17,7 +17,7 @@ bindings = [
 ]
 
 [font]
-size = 12
+size = 11
 
 [font.normal]
 family = "UbuntuMono Nerd Font"
