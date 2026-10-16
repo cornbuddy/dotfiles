@@ -19,7 +19,6 @@
         # wm
         waybar
         fuzzel
-        swaylock
         mako
         swayidle
         lm_sensors

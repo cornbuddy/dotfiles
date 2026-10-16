@@ -13,12 +13,17 @@ in {
 
   programs.niri.enable = true;
   programs.fish.enable = true;
+  programs.swaylock = {
+    enable = true;
+    package = pkgs.swaylock-effects;
+  };
   environment.systemPackages = with unstable; [
     tuigreet
     alacritty
     firefox-bin
     telegram-desktop
     pavucontrol
+    swaylock-effects
   ];
 
   security.sudo-rs = {

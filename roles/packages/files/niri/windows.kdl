@@ -34,14 +34,14 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"telegram|Band"#
+    match app-id=r#".*telegram.*|Band"#
     open-maximized false
     open-focused false
     open-on-workspace "󰻞"
 }
 
 window-rule {
-    match app-id="telegram" title="Media viewer"
+    match app-id=r#".*telegram.*"# title="Media viewer"
     open-floating true
 }
 

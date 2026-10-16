@@ -1,6 +1,5 @@
 theme "nord"
 copy_clipboard "primary"
-
 pane_frames false
 pane_frame_style "none"
 simplified_ui true
@@ -8,30 +7,42 @@ simplified_ui true
 keybinds {
     unbind "Ctrl h" "Ctrl p"
 
-    normal {
-        // tmux prefix = C-g
-        bind "Ctrl g" { SwitchToMode "locked"; }
+    // Clear defaults in normal mode to avoid conflicts
+    normal clear-defaults=true {
+        bind "Ctrl g" { SwitchToMode "tmux"; }
     }
 
-    locked {
+    // Allow switching to tmux mode even if currently in Locked mode
+    shared_except "tmux" {
+        bind "Ctrl g" { SwitchToMode "tmux"; }
+    }
+
+    tmux {
         // C-g again -> back to normal (tmux: prefix once more cancels)
         bind "Ctrl g" { SwitchToMode "normal"; }
         bind "Enter" "Esc" { SwitchToMode "normal"; }
 
-        // navigation
+        // panes
         bind "h" { MoveFocus "Left"; SwitchToMode "normal"; }
         bind "j" { MoveFocus "Down"; SwitchToMode "normal"; }
         bind "k" { MoveFocus "Up"; SwitchToMode "normal"; }
         bind "l" { MoveFocus "Right"; SwitchToMode "normal"; }
-
-        // panes modification
         bind "\"" { NewPane "Down"; SwitchToMode "normal"; }
         bind "%" { NewPane "Right"; SwitchToMode "normal"; }
         bind "x" { CloseFocus; SwitchToMode "normal"; }
 
-        bind "c" {
-            NewTab {};
-            SwitchToMode "normal";
-        }
+        // tabs
+        bind "c" { NewTab; SwitchToMode "normal"; }
+        bind "1" { GoToTab 1; SwitchToMode "normal"; }
+        bind "2" { GoToTab 2; SwitchToMode "normal"; }
+        bind "3" { GoToTab 3; SwitchToMode "normal"; }
+        bind "4" { GoToTab 4; SwitchToMode "normal"; }
+        bind "5" { GoToTab 5; SwitchToMode "normal"; }
+        bind "6" { GoToTab 6; SwitchToMode "normal"; }
+        bind "7" { GoToTab 7; SwitchToMode "normal"; }
+        bind "8" { GoToTab 8; SwitchToMode "normal"; }
+        bind "9" { GoToTab 9; SwitchToMode "normal"; }
+        bind "0" { GoToTab 0; SwitchToMode "normal"; }
     }
 }
+
