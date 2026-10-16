@@ -36,6 +36,6 @@
   ansible.builtin.import_tasks: niri.yml
   when: ubuntu_install_niri | bool
 
-- name: Install swaylock-effects
-  ansible.builtin.import_tasks: swaylock-effects.yml
-  when: ubuntu_swaylock_effects_install | bool
+- name: Install veila
+  ansible.builtin.import_tasks: veila.yml
+  when: ubuntu_veila_enabled | bool

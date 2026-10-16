@@ -20,7 +20,6 @@
         waybar
         fuzzel
         mako
-        swayidle
         lm_sensors
         networkmanagerapplet
         swaynotificationcenter

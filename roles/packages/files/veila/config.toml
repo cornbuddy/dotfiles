@@ -1,0 +1,19 @@
+theme = "catppuccin"
+
+[background]
+mode = "gradient"
+dim_strength = 0
+
+[background.gradient]
+top_left = "#88c0d0"
+top_right = "#81a1c1"
+bottom_left = "#2e3440"
+bottom_right = "#4c566a"
+
+[lock]
+screen_off_seconds = 300
+
+[weather]
+enabled = true
+location = "Minsk"
+unit = "celsius"

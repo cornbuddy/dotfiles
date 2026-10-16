@@ -1,29 +1,12 @@
 ---
 ubuntu_install_niri: true
 
-ubuntu_swaylock_effects_install: true
-ubuntu_swaylock_effects_repo: https://github.com/hboetes/swaylock-effects
-ubuntu_swaylock_effects_version: master
-ubuntu_swaylock_effects_src_dir: /tmp/swaylock-effects
-ubuntu_swaylock_effects_prefix: /usr/local
-ubuntu_swaylock_effects_deps:
-  - cmake
-  - meson
-  - ninja-build
-  - scdoc
-  - libomp-dev
-  - git
-  - gcc
-  - pkg-config
-  - meson
-  - libwayland-dev
-  - wayland-protocols
-  - libxkbcommon-dev
-  - libcairo2-dev
-  - libgdk-pixbuf-2.0-dev
-  - libpam0g-dev
-  - libcrypt-dev
-  - scdoc
+# Veila: Wayland-first screen locker (installed from the prebuilt Debian package).
+ubuntu_veila_enabled: true
+ubuntu_veila_version: 0.4.4
+ubuntu_veila_arch: amd64
+ubuntu_veila_deb_path: >-
+  /tmp/veila_{{ ubuntu_veila_version }}-1_{{ ubuntu_veila_arch }}.deb
 
 ubuntu_snap_packages:
   - name: alacritty

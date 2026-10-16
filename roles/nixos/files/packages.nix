@@ -13,17 +13,13 @@ in {
 
   programs.niri.enable = true;
   programs.fish.enable = true;
-  programs.swaylock = {
-    enable = true;
-    package = pkgs.swaylock-effects;
-  };
   environment.systemPackages = with unstable; [
     tuigreet
     alacritty
     firefox-bin
     telegram-desktop
     pavucontrol
-    swaylock-effects
+    veila
   ];
 
   security.sudo-rs = {
@@ -32,7 +28,7 @@ in {
     execWheelOnly = true;
   };
   security.polkit.enable = true;
-  security.pam.services.swaylock = {};
+  security.pam.services.veila = {};
 
   services.upower.enable = true;
   services.power-profiles-daemon.enable = true;

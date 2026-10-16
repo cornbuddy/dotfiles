@@ -1,0 +1,13 @@
+---
+
+- name: Download veila package
+  ansible.builtin.get_url:
+    url: >-
+      https://github.com/naurissteins/Veila/releases/download/{{ ubuntu_veila_version }}/veila_{{ ubuntu_veila_version }}-1_{{ ubuntu_veila_arch }}.deb
+    dest: "{{ ubuntu_veila_deb_path }}"
+
+- name: Install veila package
+  ansible.builtin.apt:
+    deb: "{{ ubuntu_veila_deb_path }}"
+    state: present
+  become: true
