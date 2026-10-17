@@ -33,9 +33,15 @@ keybinds {
         bind "\"" { NewPane "Down"; SwitchToMode "normal"; }
         bind "%" { NewPane "Right"; SwitchToMode "normal"; }
         bind "x" { CloseFocus; SwitchToMode "normal"; }
+        bind "g" {
+            Run "sh" "-c" "zellij action override-layout --apply-only-to-active-tab ~/.config/zellij/layouts/mine.kdl" {
+                close_on_exit true;
+            }
+            SwitchToMode "normal";
+        }
 
         // tabs
-        // bind "," { RenameTab; SwitchToMode "normal"; }
+        bind "," { SwitchToMode "RenameTab"; TabNameInput 0; }
         bind "c" { NewTab; SwitchToMode "normal"; }
         bind "1" { GoToTab 1; SwitchToMode "normal"; }
         bind "2" { GoToTab 2; SwitchToMode "normal"; }

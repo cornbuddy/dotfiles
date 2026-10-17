@@ -8,23 +8,45 @@ layout {
         plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
             hide_frame_for_single_pane "true"
 
-            format_left  "{mode}#[fg=#89B4FA,bg=#181825,bold] {session}#[bg=#181825] {tabs}"
-            format_right "#[fg=#424554,bg=#181825]{datetime}"
+            format_left  "{mode}#[fg=#6C7086,bg=#181825] [{session}]  {tabs}"
+            format_center ""
+            format_right "#[bg=#181825]{command_hostname} {command_battery} {command_git}"
             format_space "#[bg=#181825]"
 
-            mode_normal          "#[bg=#89B4FA] "
-            mode_tmux            "#[bg=#ffc387] "
-            mode_default_to_mode "tmux"
+            mode_normal       "#[fg=#181825,bg=#89B4FA,bold] {name} "
+            mode_tmux         "#[fg=#181825,bg=#ffc387,bold] {name} "
+            mode_resize       "#[fg=#181825,bg=#fab387,bold] {name} "
+            mode_pane         "#[fg=#181825,bg=#cba6f7,bold] {name} "
+            mode_tab          "#[fg=#181825,bg=#94e2d5,bold] {name} "
+            mode_scroll       "#[fg=#181825,bg=#89dceb,bold] {name} "
+            mode_move         "#[fg=#181825,bg=#74c7ec,bold] {name} "
+            mode_rename_tab   "#[fg=#181825,bg=#f38ba8,bold] {name} "
+            mode_rename_pane  "#[fg=#181825,bg=#f38ba8,bold] {name} "
+            mode_search       "#[fg=#181825,bg=#f9e2af,bold] {name} "
+            mode_enter_search "#[fg=#181825,bg=#f9e2af,bold] {name} "
+            mode_locked       "#[fg=#e5e9f0,bg=#6c7086,bold] {name} "
+            mode_prompt       "#[fg=#181825,bg=#a6e3a1,bold] {name} "
+            mode_session      "#[fg=#181825,bg=#89b4fa,bold] {name} "
 
-            tab_normal               "#[fg=#6C7086,bg=#181825] {index} {name} {fullscreen_indicator}{sync_indicator}{floating_indicator}"
-            tab_active               "#[fg=#9399B2,bg=#181825,bold,italic] {index} {name} {fullscreen_indicator}{sync_indicator}{floating_indicator}"
+            tab_normal               "#[fg=#6C7086,bg=#181825] {index}:{name}  "
+            tab_active               "#[fg=#9399B2,bg=#181825,bold,italic] {index}:{name}* "
             tab_fullscreen_indicator "□ "
             tab_sync_indicator       "  "
             tab_floating_indicator   "󰉈 "
 
-            datetime          "#[fg=#9399B2,bg=#181825] {format} "
-            datetime_format   "%A, %d %b %Y %H:%M"
-            datetime_timezone "Europe/Minsk"
+            command_hostname_command  "hostname"
+            command_hostname_format   "#[fg=#9399B2,bg=#181825] {stdout} "
+            command_hostname_interval "60"
+
+            command_battery_command  "cat /sys/class/power_supply/BAT0/capacity"
+            command_battery_format   "#[fg=#a3be8c,bg=#181825]  {stdout}% "
+            command_battery_interval "30"
+
+            command_git_command  "bash -c \"gitmux -cfg ~/.gitmux.conf .\""
+            command_git_format   "#[bg=#181825] {stdout} "
+            command_git_cwd       "{focused_pane_cwd}"
+            command_git_rendermode "dynamic"
+            command_git_interval  "10"
         }
     }
 }
