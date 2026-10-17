@@ -1,7 +1,11 @@
-theme "nord"
 copy_clipboard "primary"
-pane_frames false
+default_layout "mine"
+show_startup_tips false
+theme "nord"
+
+// google says that it disables top line. it doesn't :(
 pane_frame_style "none"
+pane_frames false
 simplified_ui true
 
 keybinds {
@@ -18,7 +22,6 @@ keybinds {
     }
 
     tmux {
-        // C-g again -> back to normal (tmux: prefix once more cancels)
         bind "Ctrl g" { SwitchToMode "normal"; }
         bind "Enter" "Esc" { SwitchToMode "normal"; }
 
@@ -32,6 +35,7 @@ keybinds {
         bind "x" { CloseFocus; SwitchToMode "normal"; }
 
         // tabs
+        // bind "," { RenameTab; SwitchToMode "normal"; }
         bind "c" { NewTab; SwitchToMode "normal"; }
         bind "1" { GoToTab 1; SwitchToMode "normal"; }
         bind "2" { GoToTab 2; SwitchToMode "normal"; }
