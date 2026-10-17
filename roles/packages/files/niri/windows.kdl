@@ -1,12 +1,9 @@
-// Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
-// https://niri-wm.github.io/niri/Configuration:-Window-Rules
+workspace ""
+workspace ""
+workspace "󰻞"
+workspace ""
 
-// Open the Firefox picture-in-picture player as floating by default.
 window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
@@ -24,6 +21,7 @@ window-rule {
 
 window-rule {
     match title=r#"tmux|zellij"#
+    open-fullscreen true
     open-on-workspace ""
 }
 
@@ -44,8 +42,3 @@ window-rule {
     match app-id=r#".*telegram.*"# title="Media viewer"
     open-floating true
 }
-
-workspace ""
-workspace ""
-workspace "󰻞"
-workspace ""
