@@ -185,6 +185,12 @@ animations {
     // slowdown 3.0
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
+
 include "autostart.kdl"
 include "hotkeys.kdl"
 include "input.kdl"

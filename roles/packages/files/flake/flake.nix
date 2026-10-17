@@ -23,6 +23,7 @@
         networkmanagerapplet
         swaynotificationcenter
         wl-clipboard
+        brightnessctl
         # development
         fzf
         zellij

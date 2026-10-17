@@ -37,6 +37,7 @@ local language_servers = {
   "rust_analyzer",
   "templ",
   "just",
+  "kdlfmt",
 }
 
 require("mason").setup()
@@ -86,7 +87,7 @@ vim.lsp.config("nixd", merge(lsp_setup, {
         expr = "import (builtins.getFlake(toString ./.)).inputs.nixpkgs { }",
       },
       formatting = {
-        command = { "alejandra" }, -- or nixfmt or nixpkgs-fmt
+        command = { "alejandra" },
       },
       options = {
         nixos = {
