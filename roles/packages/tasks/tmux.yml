@@ -12,5 +12,3 @@
   loop:
     - src: tmux/tmux.conf.j2
       dest: "{{ packages_tmux_config_path }}"
-    - src: tmux/gitmux.conf.j2
-      dest: "{{ packages_tmux_gitmux_config_path }}"

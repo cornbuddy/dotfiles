@@ -1,4 +1,4 @@
-{{ ansible_managed | comment }}
+---
 tmux:
   symbols:
     branch: '⎇  '

@@ -11,7 +11,6 @@
     - git
     - go
     - fonts
-    - hledger
     - nvim
     - tmux
   loop_control:
@@ -22,6 +21,8 @@
   loop:
     - name: alacritty
       path: "{{ packages_xdg_config }}/alacritty"
+    - name: gitmux
+      path: "{{ packages_xdg_config }}/gitmux"
     - name: niri
       path: "{{ packages_xdg_config }}/niri"
     - name: swaync

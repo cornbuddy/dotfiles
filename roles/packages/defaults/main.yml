@@ -1,15 +1,15 @@
 ---
+packages_xdg_config: "{{ lookup('env', 'HOME') }}/.config"
+
 packages_nix_flakes: true
 packages_nix_profile_bin: "{{ lookup('env', 'HOME') }}/.nix-profile/bin"
 packages_nix_daemon: >-
   /nix/var/nix/profiles/default/etc/profile.d/nix-daemon
 
-packages_xdg_config: "{{ lookup('env', 'HOME') }}/.config"
+packages_tmux_gitmux_config_path: "{{ packages_xdg_config }}/gitmux/gitmux.yml"
 
 packages_go_install:
   - github.com/juev/hledger-lsp/cmd/hledger-lsp@latest
-
-packages_alacritty_config_dir: "{{ packages_xdg_config }}/alacritty"
 
 packages_fish_bin: "{{ packages_nix_profile_bin }}/fish"
 packages_fish_config_dir: "{{ packages_xdg_config }}/fish"
@@ -38,7 +38,6 @@ packages_git_github_identity_file: "{{ ansible_env.HOME }}/.ssh/github"
 
 packages_tmux_config_path: "{{ ansible_env.HOME }}/.tmux.conf"
 packages_tmux_plugins_dir: "{{ ansible_env.HOME }}/.tmux/plugins"
-packages_tmux_gitmux_config_path: "{{ ansible_env.HOME }}/.gitmux.conf"
 packages_tmux_tpm_git_url: https://github.com/tmux-plugins/tpm
 packages_tmux_status_battery: >-
   #{battery_icon} #{battery_percentage}
@@ -48,9 +47,6 @@ packages_tmux_status_gitmux: >-
   '#{pane_current_path}')#[bg=brightblack]
 packages_tmux_status_right: >-
   #H {{ packages_tmux_status_battery }} {{ packages_tmux_status_gitmux }}
-
-packages_hledger_repo: git@github.com:cornbuddy/finances.git
-packages_hledger_path: "{{ ansible_env.HOME }}/code/finances"
 
 packages_fonts_force_checkout: false
 packages_fonts_url: https://github.com/ryanoasis/nerd-fonts.git
