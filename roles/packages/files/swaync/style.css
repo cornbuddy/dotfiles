@@ -1,0 +1,50 @@
+/* Nord overrides for SwayNotificationCenter.
+   swaync layers this file on top of its packaged default style.css, so
+   only rules that actually differ from the default are kept here.
+   Color variables live in vars.css (imported below). */
+
+@import url("vars.css");
+
+.notification-row {
+  margin: 4px 0;
+}
+
+/* Uniform 3px card border, colored by urgency */
+.notification-row .notification-background .notification {
+  border: 3px solid var(--noti-border-color);
+}
+
+.notification-row .notification-background .notification.low,
+.notification-row .notification-background .notification.normal {
+  border: 3px solid var(--bg-selected); /* nord8 */
+}
+
+.notification-row .notification-background .notification.critical {
+  border: 3px solid var(--noti-critical);
+}
+
+.close-button:hover {
+  color: var(--noti-bg-darker);
+}
+
+.widget {
+  background: rgba(var(--noti-bg), var(--widget-bg-alpha));
+}
+
+.widget-title,
+.widget-dnd,
+.widget-inhibitors {
+  background: var(--noti-bg-darker);
+}
+
+.widget-dnd switch:checked {
+  background: var(--bg-selected);
+}
+
+.per-app-volume {
+  background-color: var(--noti-bg-darker);
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-subtitle {
+  color: var(--text-color-disabled);
+}

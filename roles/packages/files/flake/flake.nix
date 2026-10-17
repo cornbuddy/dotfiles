@@ -19,7 +19,6 @@
         # wm
         waybar
         fuzzel
-        mako
         lm_sensors
         networkmanagerapplet
         swaynotificationcenter

@@ -1,0 +1,49 @@
+{
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "control-center-width": 500,
+  "control-center-height": 600,
+  "notification-window-width": 500,
+  "timeout": 10,
+  "timeout-low": 5,
+  "timeout-critical": 0,
+  "notification-grouping": true,
+  "relative-timestamps": true,
+  "fit-to-screen": true,
+  "text-empty": "No notifications",
+  "hide-on-action": true,
+  "hide-on-clear": false,
+  "notification-visibility": {
+    "band": {
+      "state": "enabled",
+      "app-name": "Band",
+      "override-urgency": "Critical"
+    }
+  },
+  "widgets": [
+    "inhibitors",
+    "title",
+    "dnd",
+    "notifications"
+  ],
+  "widget-config": {
+    "notifications": {
+      "vexpand": true
+    },
+    "inhibitors": {
+      "text": "Inhibitors",
+      "button-text": "Clear All",
+      "clear-all-button": true
+    },
+    "title": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "Clear All"
+    },
+    "dnd": {
+      "text": "Do Not Disturb"
+    }
+  }
+}

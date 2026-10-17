@@ -1,4 +1,5 @@
 spawn-at-startup "waybar"
+spawn-at-startup "swaync"
 spawn-at-startup "veilad"
 spawn-sh-at-startup "veila idle --lock-after=300 --lock-before-sleep"
 

@@ -24,6 +24,8 @@
       path: "{{ packages_xdg_config }}/alacritty"
     - name: niri
       path: "{{ packages_xdg_config }}/niri"
+    - name: swaync
+      path: "{{ packages_xdg_config }}/swaync"
     - name: veila
       path: "{{ packages_xdg_config }}/veila"
     - name: nvim

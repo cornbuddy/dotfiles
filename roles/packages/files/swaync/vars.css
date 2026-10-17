@@ -1,0 +1,27 @@
+/* Nord palette — https://www.nordtheme.com/docs/colors-and-palettes
+   Imported by style.css; keep only variable declarations here. */
+
+:root {
+  /* surfaces */
+  --cc-bg: rgba(38, 41, 49, 0.92); /* nord1 */
+  --noti-bg: 59, 66, 82; /* nord1 */
+  --noti-bg-alpha: 0.75; /* card transparency */
+  --noti-bg-darker: rgb(46, 52, 64); /* nord0 */
+  --noti-bg-hover: rgb(67, 76, 94); /* nord2 */
+  --noti-bg-focus: rgba(67, 76, 94, 0.7); /* nord2 */
+  /* accents */
+  --bg-selected: rgb(136, 192, 208); /* nord8 */
+  --noti-critical: rgb(191, 97, 106); /* nord11 */
+  --noti-border-color: rgba(76, 86, 106, 0.5); /* nord3 */
+  --widget-bg-alpha: 0.7;
+  /* text */
+  --text-color: rgb(236, 239, 244); /* nord6 */
+  --text-color-disabled: rgb(126, 134, 148); /* nord3 lightened */
+  /* close button */
+  --noti-close-bg: rgb(76, 86, 106); /* nord3 */
+  --noti-close-bg-hover: rgb(216, 222, 233); /* nord4 */
+  /* mpris */
+  --mpris-album-art-overlay: rgba(46, 52, 64, 0.65); /* nord0 */
+  --mpris-button-hover: rgba(76, 86, 106, 0.6); /* nord3 */
+  --border-radius: 10px;
+}
