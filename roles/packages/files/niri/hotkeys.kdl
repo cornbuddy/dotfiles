@@ -4,6 +4,7 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+P hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+Escape hotkey-overlay-title="Lock the Screen: veila" { spawn "veila" "lock"; }
+    Mod+N hotkey-overlay-title="Notifications" { spawn "swaync-client" "-t" "-sw"; }
 
     XF86AudioRaiseVolume  allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.1+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}' | xargs -I[] notify-send -e -u low -h string:x-canonical-private-synchronous:volume_notif -h int:value:[] '🔊 Volume: []%'"; }
     XF86AudioLowerVolume  allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}' | xargs -I[] notify-send -e -u low -h string:x-canonical-private-synchronous:volume_notif -h int:value:[] '🔉 Volume: []%'"; }

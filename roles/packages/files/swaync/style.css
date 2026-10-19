@@ -37,8 +37,74 @@
   background: var(--noti-bg-darker);
 }
 
+.widget-dnd switch {
+  background: var(--noti-bg-hover);
+  border: 1px solid var(--noti-border-color);
+}
+
 .widget-dnd switch:checked {
   background: var(--bg-selected);
+}
+
+.widget-dnd switch slider {
+  background: var(--text-color);
+  border-radius: var(--border-radius);
+}
+
+.widget-dnd switch:checked slider {
+  background: var(--noti-bg-darker);
+}
+
+/* Widget headings and Clear All buttons */
+.widget-title > label,
+.widget-dnd label,
+.widget-inhibitors > label {
+  color: var(--text-color);
+}
+
+.widget-title > button,
+.widget-inhibitors > button {
+  background: var(--noti-bg-hover);
+  color: var(--text-color);
+  border: 1px solid var(--noti-border-color);
+}
+
+.widget-title > button:hover,
+.widget-inhibitors > button:hover {
+  background: var(--noti-bg-focus);
+}
+
+/* Action buttons (shutdown / reboot / sleep) */
+.widget-buttons-grid flowbox {
+  column-spacing: 16px;
+  row-spacing: 16px;
+  margin: 4px;
+}
+
+.widget-buttons-grid flowboxchild {
+  margin: 0;
+  flex-grow: 1;
+}
+
+.widget-buttons-grid flowboxchild button {
+  background: var(--noti-bg-darker);
+  color: var(--text-color);
+  border: 1px solid var(--noti-border-color);
+  border-radius: var(--border-radius);
+  padding: 22px 0;
+  min-width: 140px;
+  font-size: 1.7rem;
+  flex-grow: 1;
+}
+
+.widget-buttons-grid flowboxchild button:hover {
+  background: var(--noti-bg-hover);
+  border-color: var(--bg-selected);
+}
+
+.widget-buttons-grid flowboxchild button:active {
+  background: var(--bg-selected);
+  color: var(--noti-bg-darker);
 }
 
 .per-app-volume {

@@ -26,9 +26,27 @@
     "inhibitors",
     "title",
     "dnd",
+    "buttons-grid",
     "notifications"
   ],
   "widget-config": {
+    "buttons-grid": {
+      "buttons-per-row": 3,
+      "actions": [
+        {
+          "label": "⏻",
+          "command": "loginctl poweroff"
+        },
+        {
+          "label": "⟳",
+          "command": "loginctl reboot"
+        },
+        {
+          "label": "☾",
+          "command": "loginctl suspend"
+        }
+      ]
+    },
     "notifications": {
       "vexpand": true
     },

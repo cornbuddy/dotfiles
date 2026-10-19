@@ -14,6 +14,9 @@ keybinds {
     // Clear defaults in normal mode to avoid conflicts
     normal clear-defaults=true {
         bind "Ctrl g" { SwitchToMode "tmux"; }
+        bind "Alt o" { SwitchToMode "session"; }
+        bind "Alt p" { SwitchToMode "pane"; }
+        bind "Alt `" { ToggleFloatingPanes; }
     }
 
     // Allow switching to tmux mode even if currently in Locked mode
