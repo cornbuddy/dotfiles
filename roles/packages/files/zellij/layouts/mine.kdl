@@ -42,7 +42,7 @@ layout {
             command_battery_format   "#[fg=#a3be8c,bg=#181825]  {stdout}% "
             command_battery_interval "30"
 
-            command_git_command    "bash -c \"gitmux -cfg ~/.config/gitmux/gitmux.yml .\""
+            command_git_command    "bash -c ~/.config/zellij/scripts/git-status.sh"
             command_git_format     "#[bg=#181825] {stdout} "
             command_git_cwd        "{focused_pane_cwd}"
             command_git_rendermode "dynamic"
