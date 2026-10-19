@@ -8,9 +8,9 @@ layout {
         plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
             hide_frame_for_single_pane "true"
 
-            format_left  "{mode}#[fg=#6C7086,bg=#181825] [{session}] {tabs}"
+            format_left  "{mode}#[fg=#6C7086,bg=#181825]  [{session}] {tabs}"
             format_center ""
-            format_right "#[bg=#181825]{command_hostname} {command_battery} {command_git}"
+            format_right "#[bg=#181825]{command_hostname}#[bg=#181825] {command_battery}#[bg=#181825] {command_git}"
             format_space "#[bg=#181825]"
 
             mode_normal       "#[fg=#181825,bg=#89B4FA,bold] {name} "
@@ -24,26 +24,27 @@ layout {
             mode_rename_pane  "#[fg=#181825,bg=#f38ba8,bold] {name} "
             mode_search       "#[fg=#181825,bg=#f9e2af,bold] {name} "
             mode_enter_search "#[fg=#181825,bg=#f9e2af,bold] {name} "
-            mode_locked       "#[fg=#e5e9f0,bg=#6c7086,bold] {name} "
+            mode_locked       "#[fg=#181825,bg=#6c7086,bold] {name} "
             mode_prompt       "#[fg=#181825,bg=#a6e3a1,bold] {name} "
             mode_session      "#[fg=#181825,bg=#89b4fa,bold] {name} "
 
-            tab_normal               "#[fg=#6C7086,bg=#181825] {index}:{name} {fullscreen_indicator}{sync_indicator}{floating_indicator}"
-            tab_active               "#[fg=#9399B2,bg=#181825,bold,italic] {index}:{name}* {fullscreen_indicator}{sync_indicator}{floating_indicator}"
+            tab_normal               "#[bg=#181825,fg=#6C7086] {index}:{name}"
+            tab_active               "#[bg=#181825,fg=#9399B2,bold] {index}:{name}* {fullscreen_indicator}{sync_indicator}{floating_indicator}"
             tab_fullscreen_indicator "□ "
             tab_sync_indicator       "  "
             tab_floating_indicator   "󰉈 "
 
             command_hostname_command  "hostname"
-            command_hostname_format   "#[fg=#9399B2,bg=#181825] {stdout} "
+            command_hostname_format   "#[bg=#181825,fg=#9399B2] {stdout} "
             command_hostname_interval "60"
 
-            command_battery_command  "cat /sys/class/power_supply/BAT0/capacity"
-            command_battery_format   "#[fg=#a3be8c,bg=#181825]  {stdout}% "
-            command_battery_interval "30"
+            command_battery_command    "bash -c ~/.config/zellij/scripts/battery.sh"
+            command_battery_format     "#[bg=#181825]{stdout} "
+            command_battery_rendermode "dynamic"
+            command_battery_interval   "5"
 
             command_git_command    "bash -c ~/.config/zellij/scripts/git-status.sh"
-            command_git_format     "#[bg=#181825] {stdout} "
+            command_git_format     "#[bg=#33475f]{stdout} "
             command_git_cwd        "{focused_pane_cwd}"
             command_git_rendermode "dynamic"
             command_git_interval   "1"
