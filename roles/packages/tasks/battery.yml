@@ -1,0 +1,30 @@
+---
+- name: Ensure user systemd directory exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/systemd/user"
+    state: directory
+    mode: "0755"
+
+- name: Render battery-notify systemd service
+  ansible.builtin.template:
+    src: systemd/user/battery-notify.service.j2
+    dest: "{{ ansible_env.HOME }}/.config/systemd/user/battery-notify.service"
+    mode: "0644"
+
+- name: Render battery-notify systemd timer
+  ansible.builtin.template:
+    src: systemd/user/battery-notify.timer.j2
+    dest: "{{ ansible_env.HOME }}/.config/systemd/user/battery-notify.timer"
+    mode: "0644"
+
+- name: Reload systemd user daemon
+  ansible.builtin.systemd_service:
+    daemon_reload: true
+    scope: user
+
+- name: Enable and start battery-notify timer
+  ansible.builtin.systemd_service:
+    name: battery-notify.timer
+    enabled: true
+    state: started
+    scope: user

@@ -1,0 +1,25 @@
+---
+- name: Ensure user systemd directory exists
+  ansible.builtin.file:
+    path: "{{ packages_xdg_config }}/systemd/user"
+    state: directory
+    mode: "0755"
+
+- name: Render tomat systemd user unit
+  ansible.builtin.template:
+    src: systemd/user/tomat.service.j2
+    dest: "{{ packages_xdg_config }}/systemd/user/tomat.service"
+    mode: "0644"
+    force: true
+
+- name: Reload systemd user daemon
+  ansible.builtin.systemd_service:
+    daemon_reload: true
+    scope: user
+
+- name: Enable and start tomat systemd service
+  ansible.builtin.systemd_service:
+    name: tomat.service
+    enabled: true
+    state: started
+    scope: user

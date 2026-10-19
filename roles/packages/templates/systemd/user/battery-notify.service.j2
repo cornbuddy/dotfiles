@@ -1,0 +1,8 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=Battery low notification
+
+[Service]
+Type=oneshot
+ExecStart=%h/.config/battery/battery-notify.sh

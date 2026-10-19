@@ -1,0 +1,12 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=Check battery level and notify when low
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

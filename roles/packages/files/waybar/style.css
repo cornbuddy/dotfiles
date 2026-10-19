@@ -150,6 +150,45 @@ button:hover {
   color: @secondary_fixed_dim;
 }
 
+
+#custom-tomat {
+  margin: 0.25em 0.3125em;
+  padding: 0.375em 0.9375em 0.375em 0.625em;
+  background-color: @surface_container;
+  border-radius: 1.25em;
+  color: @secondary_fixed_dim;
+}
+
+#custom-tomat.work {
+  background-color: @primary;
+  color: @on_primary;
+}
+
+#custom-tomat.work-paused {
+  background-color: @primary_container;
+  color: @on_primary_container;
+}
+
+#custom-tomat.break {
+  background-color: @tertiary;
+  color: @on_tertiary;
+}
+
+#custom-tomat.break-paused {
+  background-color: @tertiary_container;
+  color: @on_tertiary_container;
+}
+
+#custom-tomat.long-break {
+  background-color: @secondary;
+  color: @on_secondary;
+}
+
+#custom-tomat.long-break-paused {
+  background-color: @secondary_container;
+  color: @on_secondary_container;
+}
+
 #pulseaudio-slider {
   margin: 0.25em 0.3125em;
   padding: 0 0.125em;

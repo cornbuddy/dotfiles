@@ -1,0 +1,26 @@
+[timer]
+work = 25.0
+break = 5.0
+long_break = 15.0
+sessions = 4
+auto_advance = "to-break"
+
+[sound]
+mode = "embedded"
+volume = 0.5
+
+[notification]
+enabled = true
+icon = "auto"
+timeout = 4000
+
+[display]
+text_format = "{icon} {time} {state}"
+
+[display.icons]
+work = ""
+break = ""
+long_break = ""
+play = ""
+pause = ""
+stop = ""

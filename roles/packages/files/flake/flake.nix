@@ -24,6 +24,7 @@
         swaynotificationcenter
         wl-clipboard
         brightnessctl
+        tomat
         # development
         fzf
         zellij

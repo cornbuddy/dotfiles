@@ -13,6 +13,8 @@
     - fonts
     - nvim
     - tmux
+    - tomat
+    - battery
   loop_control:
     loop_var: file
 
@@ -21,12 +23,16 @@
   loop:
     - name: alacritty
       path: "{{ packages_xdg_config }}/alacritty"
+    - name: battery
+      path: "{{ packages_xdg_config }}/battery"
     - name: gitmux
       path: "{{ packages_xdg_config }}/gitmux"
     - name: niri
       path: "{{ packages_xdg_config }}/niri"
     - name: swaync
       path: "{{ packages_xdg_config }}/swaync"
+    - name: tomat
+      path: "{{ packages_xdg_config }}/tomat"
     - name: veila
       path: "{{ packages_xdg_config }}/veila"
     - name: nvim

@@ -1,0 +1,14 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=Tomat Pomodoro server
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=%h/.nix-profile/bin/tomat daemon run
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
