@@ -5,7 +5,7 @@
   "include": [
     "./modules/audio.jsonc",
     "./modules/battery.jsonc",
-       "./modules/clock.jsonc",
+    "./modules/clock.jsonc",
     "./modules/connections.jsonc",
     "./modules/groups.jsonc",
     "./modules/language.jsonc",
