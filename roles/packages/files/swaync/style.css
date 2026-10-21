@@ -1,26 +1,21 @@
-/* Nord overrides for SwayNotificationCenter.
-   swaync layers this file on top of its packaged default style.css, so
-   only rules that actually differ from the default are kept here.
-   Color variables live in vars.css (imported below). */
-
 @import url("vars.css");
 
 .notification-row {
-  margin: 4px 0;
+  margin: 0.25rem 0;
 }
 
-/* Uniform 3px card border, colored by urgency */
+/* Uniform 0.1875rem card border, colored by urgency */
 .notification-row .notification-background .notification {
-  border: 3px solid var(--noti-border-color);
+  border: 0.1875rem solid var(--noti-border-color);
 }
 
 .notification-row .notification-background .notification.low,
 .notification-row .notification-background .notification.normal {
-  border: 3px solid var(--bg-selected); /* nord8 */
+  border: 0.1875rem solid var(--bg-selected); /* nord8 */
 }
 
 .notification-row .notification-background .notification.critical {
-  border: 3px solid var(--noti-critical);
+  border: 0.1875rem solid var(--noti-critical);
 }
 
 .close-button:hover {
@@ -39,7 +34,7 @@
 
 .widget-dnd switch {
   background: var(--noti-bg-hover);
-  border: 1px solid var(--noti-border-color);
+  border: 0.0625rem solid var(--noti-border-color);
 }
 
 .widget-dnd switch:checked {
@@ -66,7 +61,7 @@
 .widget-inhibitors > button {
   background: var(--noti-bg-hover);
   color: var(--text-color);
-  border: 1px solid var(--noti-border-color);
+  border: 0.0625rem solid var(--noti-border-color);
 }
 
 .widget-title > button:hover,
@@ -76,35 +71,57 @@
 
 /* Action buttons (shutdown / reboot / sleep) */
 .widget-buttons-grid flowbox {
-  column-spacing: 16px;
-  row-spacing: 16px;
-  margin: 4px;
+  margin: 0.125rem;
 }
 
 .widget-buttons-grid flowboxchild {
-  margin: 0;
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
   flex-grow: 1;
+  --btn-border: var(--noti-border-color);
+  --btn-fg: var(--btn-fg-on-light);
 }
 
 .widget-buttons-grid flowboxchild button {
-  background: var(--noti-bg-darker);
-  color: var(--text-color);
-  border: 1px solid var(--noti-border-color);
+  background: var(--btn-bg, var(--noti-bg-darker));
+  color: var(--btn-fg, var(--text-color));
+  border: 0.0625rem solid var(--noti-border-color);
   border-radius: var(--border-radius);
-  padding: 22px 0;
-  min-width: 140px;
-  font-size: 1.7rem;
+  padding: 0.25rem 0;
+  min-width: 3.25rem;
+  font-size: 1.5rem;
   flex-grow: 1;
 }
 
 .widget-buttons-grid flowboxchild button:hover {
-  background: var(--noti-bg-hover);
-  border-color: var(--bg-selected);
+  background: var(--btn-hover, var(--noti-bg-hover));
+  border-color: var(--btn-border, var(--bg-selected));
 }
 
 .widget-buttons-grid flowboxchild button:active {
-  background: var(--bg-selected);
-  color: var(--noti-bg-darker);
+  background: var(--btn-active, var(--bg-selected));
+  color: var(--btn-fg-active, var(--noti-bg-darker));
+}
+
+/* Per-action colors: 1 = power (nord11), 2 = reboot (nord13), 3 = sleep (nord9) */
+.widget-buttons-grid flowboxchild:nth-child(1) button {
+  --btn-bg: var(--btn-power-bg);
+  --btn-hover: var(--btn-power-bg-hover);
+  --btn-active: var(--btn-power-bg-active);
+  --btn-fg: var(--text-color);
+  --btn-fg-active: var(--text-color);
+}
+
+.widget-buttons-grid flowboxchild:nth-child(2) button {
+  --btn-bg: var(--btn-reboot-bg);
+  --btn-hover: var(--btn-reboot-bg-hover);
+  --btn-active: var(--btn-reboot-bg-active);
+}
+
+.widget-buttons-grid flowboxchild:nth-child(3) button {
+  --btn-bg: var(--btn-sleep-bg);
+  --btn-hover: var(--btn-sleep-bg-hover);
+  --btn-active: var(--btn-sleep-bg-active);
 }
 
 .per-app-volume {

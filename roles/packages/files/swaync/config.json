@@ -35,15 +35,15 @@
       "actions": [
         {
           "label": "⏻",
-          "command": "loginctl poweroff"
+          "command": "systemctl poweroff"
         },
         {
           "label": "⟳",
-          "command": "loginctl reboot"
+          "command": "systemctl reboot"
         },
         {
           "label": "☾",
-          "command": "loginctl suspend"
+          "command": "systemctl suspend"
         }
       ]
     },

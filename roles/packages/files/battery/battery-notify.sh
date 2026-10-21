@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -u
 
-BAT="${BATTERY_DEVICE:-$(ls /sys/class/power_supply/BAT* 2>/dev/null | head -1)}"
+BAT="${BATTERY_DEVICE:-$(ls -d /sys/class/power_supply/BAT* 2>/dev/null | head -1)}"
 STATE_DIR="${XDG_RUNTIME_DIR:-/tmp}"
 STATE_FILE="$STATE_DIR/battery-notify-state"
 
