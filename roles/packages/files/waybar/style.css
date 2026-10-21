@@ -78,24 +78,71 @@ button:hover {
   color: @error_container;
 }
 
+/* Pill-shaped modules: shared shell */
 #power-profiles-daemon,
-#idle_inhibitor {
+#idle_inhibitor,
+#audio,
+#connections,
+#system,
+#storage,
+#language,
+#clock,
+#battery,
+#custom-tomat,
+#tray {
   margin: 0.25em 0.3125em;
-  padding: 0.375em 0.9375em 0.375em 0.625em;
   background-color: @surface_container;
   border-radius: 1.25em;
+}
+
+#power-profiles-daemon,
+#idle_inhibitor,
+#audio,
+#connections,
+#system,
+#storage,
+#language,
+#clock,
+#battery,
+#custom-tomat {
   color: @secondary_fixed_dim;
+}
+
+#power-profiles-daemon,
+#idle_inhibitor,
+#custom-tomat {
+  padding: 0.375em 0.9375em 0.375em 0.625em;
 }
 
 #audio,
 #connections,
 #system,
-#storage {
-  margin: 0.25em 0.3125em;
+#storage,
+#language {
   padding: 0.375em 0.375em;
-  background-color: @surface_container;
-  border-radius: 1.25em;
-  color: @secondary_fixed_dim;
+}
+
+#battery {
+  padding: 0.375em 1em;
+}
+
+#clock {
+  padding: 0.375em 0.625em 0.375em 1em;
+}
+
+#tray {
+  padding: 0.375em 0.625em;
+}
+
+#custom-tray-arrow {
+  padding: 0.375em 0.875em 0.375em 0.625em;
+  color: @primary;
+}
+
+#tray > .passive,
+#tray > .active,
+#tray > .needs-attention {
+  -gtk-icon-effect: none;
 }
 
 #disk,
@@ -114,49 +161,6 @@ button:hover {
 #pulseaudio {
   margin-right: 0.75em;
   margin-left: 0.5em;
-}
-
-#tray {
-  margin: 0.25em 0.3125em;
-  background-color: @surface_container;
-  border-radius: 1.25em;
-  padding: 0.375em 0.625em;
-}
-
-#custom-tray-arrow {
-  padding: 0.375em 0.875em 0.375em 0.625em;
-  color: @primary;
-}
-
-#tray > .passive,
-#tray > .active,
-#tray > .needs-attention {
-  -gtk-icon-effect: none;
-}
-
-#battery {
-  margin: 0.25em 0.3125em;
-  padding: 0.375em 1em;
-  background-color: @surface_container;
-  border-radius: 1.25em;
-  color: @secondary_fixed_dim;
-}
-
-#clock {
-  margin: 0.25em 0.3125em;
-  padding: 0.375em 0.625em 0.375em 1em;
-  background-color: @surface_container;
-  border-radius: 1.25em;
-  color: @secondary_fixed_dim;
-}
-
-
-#custom-tomat {
-  margin: 0.25em 0.3125em;
-  padding: 0.375em 0.9375em 0.375em 0.625em;
-  background-color: @surface_container;
-  border-radius: 1.25em;
-  color: @secondary_fixed_dim;
 }
 
 #custom-tomat.work {
@@ -196,16 +200,18 @@ button:hover {
   border-radius: 1.25em;
 }
 
-#pulseaudio-slider trough {
+#pulseaudio-slider trough,
+#pulseaudio-slider highlight {
   min-height: 0.625em;
-  min-width: 5em;
   border-radius: 0.625em;
+}
+
+#pulseaudio-slider trough {
+  min-width: 5em;
   background-color: @outline_variant;
 }
 
 #pulseaudio-slider highlight {
-  min-height: 0.625em;
-  border-radius: 0.625em;
   background-color: @secondary_fixed_dim;
 }
 
@@ -228,7 +234,16 @@ button:hover {
 }
 
 window#waybar {
-  background: transparent;
+  background: rgba(15, 20, 22, 0.5); /* @surface at 50% */
   color: @on_background;
   margin-top: 0.75em;
+}
+
+label#language {
+  background-color: transparent;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
