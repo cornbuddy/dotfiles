@@ -54,7 +54,6 @@ with pkgs; [
   kubernetes-helm
   kustomize
   fluxcd
-  podman
   # tools
   net-tools
   wireguard-tools
