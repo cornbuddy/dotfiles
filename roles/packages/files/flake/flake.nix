@@ -6,95 +6,55 @@
   };
 
   outputs = {
-    self, # profile add fails without this
+    self, # auto-provided; kept in the arg set so `nix profile add` works
     nixpkgs,
   }: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    # each supported system gets its own package set and toolbox
+    systems = ["x86_64-linux" "aarch64-linux"];
+
+    # apply f once per system, with that system's own pkgs
+    forAllSystems = f:
+      builtins.listToAttrs (map (system: {
+          name = system;
+          value = f (nixpkgs.legacyPackages.${system});
+        })
+        systems);
+
+    mkToolbox = pkgs: name: paths:
+      pkgs.buildEnv {
+        inherit name paths;
+        ignoreCollisions = false;
+      };
+
+    toolbox = pkgs: let
+      lib = pkgs.lib;
+      base = import ./base/base.nix {inherit pkgs;};
+
+      # every *.nix in ./hosts is a machine; the basename is its hostname
+      machineFiles =
+        builtins.filter
+        (lib.hasSuffix ".nix")
+        (builtins.attrNames (builtins.readDir ./hosts));
+
+      hostsets = builtins.listToAttrs (map (file: {
+          name = lib.removeSuffix ".nix" file;
+          value = import ./hosts/${file} {inherit pkgs;};
+        })
+        machineFiles);
+
+      # one output per machine hostname; the host file must exist or
+      # `nix profile add .#<hostname>` fails (intentionally)
+      hostOutputs = builtins.listToAttrs (map (name: {
+        inherit name;
+        value = mkToolbox pkgs "toolbox-${name}" (base ++ hostsets.${name});
+      }) (builtins.attrNames hostsets));
+    in
+      hostOutputs
+      // {
+        # default = base toolbox only; a machine is picked by hostname
+        default = mkToolbox pkgs "toolbox-default" base;
+      };
   in {
-    packages.${system}.default = pkgs.buildEnv {
-      name = "toolbox";
-      ignoreCollisions = true;
-      paths = with pkgs; [
-        # wm
-        waybar
-        fuzzel
-        lm_sensors
-        networkmanagerapplet
-        swaynotificationcenter
-        wl-clipboard
-        brightnessctl
-        tomat
-        # development
-        fzf
-        zellij
-        opencode
-        golangci-lint
-        gcc
-        devenv
-        nixd
-        alejandra
-        bun
-        luaPackages.tree-sitter-cli
-        neovim
-        tree-sitter
-        cargo
-        clippy
-        rustc
-        go
-        delve
-        tflint
-        ruby
-        rustfmt
-        gcc
-        gnumake
-        nodejs_24
-        jdk25
-        python314
-        opentofu
-        terraform-docs
-        terragrunt
-        awscli2
-        ansible
-        git
-        tmux
-        gitmux
-        pre-commit
-        action-validator
-        xsel
-        # language servers
-        rust-analyzer
-        ansible-language-server
-        dockerfile-language-server
-        docker-compose-language-service
-        lua-language-server
-        tofu-ls
-        gopls
-        helm-ls
-        ccls
-        just-lsp
-        # containers
-        kubectl
-        kubernetes-helm
-        kustomize
-        fluxcd
-        podman
-        # tools
-        net-tools
-        wireguard-tools
-        curl
-        dig
-        jq
-        ripgrep
-        openssh
-        fish
-        zip
-        unzip
-        htop
-        tree
-        file
-        dbeaver-bin
-      ];
-    };
+    packages = forAllSystems toolbox;
   };
 }

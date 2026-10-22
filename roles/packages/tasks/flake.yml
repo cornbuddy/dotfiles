@@ -1,4 +1,17 @@
 ---
+- name: Ensure a toolbox definition exists for this host
+  ansible.builtin.stat:
+    path: "{{ role_path }}/files/flake/hosts/{{ packages_flake_output }}.nix"
+  register: host_toolbox
+
+- name: Fail if no toolbox definition for this host
+  ansible.builtin.assert:
+    that: host_toolbox.stat.exists
+    fail_msg: >-
+      No toolbox definition for host '{{ packages_flake_output }}'.
+      Add roles/packages/files/flake/hosts/{{ packages_flake_output }}.nix
+      (or correct packages_flake_output).
+
 - name: Activate flake
   ansible.builtin.shell: |-
     {% if ansible_distribution != 'NixOS' %}
@@ -6,8 +19,20 @@
     {% endif %}
 
     set -eu
+    export PATH="{{ ansible_env.HOME }}/.nix-profile/bin:$PATH"
     git add .
-    nix profile add --show-trace .#default
+
+    # Replace any toolbox already in the profile (from a prior run, or a different
+    # output such as `default`) so re-running doesn't cause file collisions.
+    # `jq` ships in the base toolbox, so it's absent only on a first install when
+    # there is nothing to remove anyway.
+    if command -v jq >/dev/null 2>&1; then
+      for entry in $(nix profile list --json 2>/dev/null | jq -r '.elements | to_entries[] | select(.value.originalUrl | contains("dir=roles/packages/files/flake")) | .key'); do
+        nix profile remove "$entry" >/dev/null 2>&1 || true
+      done
+    fi
+
+    nix profile add --show-trace .#{{ packages_flake_output }}
     nix flake update
     nix profile upgrade --all
     nix-collect-garbage
