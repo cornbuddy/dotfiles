@@ -5,7 +5,6 @@
     "return-type": "json",
     "format": "{}",
     "on-click": "tomat toggle",
-    "on-click-right": "tomat stop",
-    "on-click-middle": "tomat skip"
+    "on-click-right": "tomat skip"
   }
 }

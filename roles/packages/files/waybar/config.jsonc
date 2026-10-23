@@ -6,25 +6,24 @@
     "./modules/audio.jsonc",
     "./modules/battery.jsonc",
     "./modules/clock.jsonc",
-    "./modules/connections.jsonc",
     "./modules/groups.jsonc",
     "./modules/language.jsonc",
-    "./modules/niri.jsonc",
+    "./modules/workspaces.jsonc",
     "./modules/storage.jsonc",
     "./modules/system.jsonc",
     "./modules/tomat.jsonc",
     "./modules/tray-notif.jsonc"
   ],
   "modules-left": [
-    "group/niri"
+    "group/workspaces",
+    "custom/tomat",
+    "group/window"
   ],
   "modules-right": [
     "group/audio",
-    "group/connections",
     "group/system",
     "group/storage",
     "battery",
-    "custom/tomat",
     "clock",
     "group/language",
     "group/tray"

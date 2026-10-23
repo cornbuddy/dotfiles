@@ -65,8 +65,9 @@
 
   services.upower.enable = true;
   services.logind.settings.Login = {
-    HandlePowerKey = "ignore";
     HandleLidSwitch = "lock";
+    HandlePowerKey = "suspend";
+    HandlePowerKeyLongPress = "poweroff";
   };
 
   users.users.cornbuddy = {

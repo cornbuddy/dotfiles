@@ -5,10 +5,15 @@
       "niri/language"
     ]
   },
-  "group/niri": {
+  "group/workspaces": {
     "orientation": "horizontal",
     "modules": [
-      "niri/workspaces",
+      "niri/workspaces"
+    ]
+  },
+  "group/window": {
+    "orientation": "horizontal",
+    "modules": [
       "niri/window"
     ]
   },
@@ -22,7 +27,6 @@
   "group/system": {
     "orientation": "horizontal",
     "modules": [
-      "temperature",
       "cpu",
       "memory"
     ]
@@ -37,12 +41,6 @@
       "pulseaudio",
       "pulseaudio/slider",
       "pulseaudio#microphone"
-    ]
-  },
-  "group/connections": {
-    "orientation": "horizontal",
-    "modules": [
-      "network"
     ]
   },
   "group/tray": {

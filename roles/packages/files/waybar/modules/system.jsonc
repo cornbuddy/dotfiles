@@ -8,18 +8,6 @@
       "critical": 90
     }
   },
-  "temperature": {
-    "tooltip": false,
-    "interval": 10,
-    "critical-threshold": 80,
-    "format": "{icon} {temperatureC}°C",
-    "format-critical": "󱗗 {temperatureC}°C",
-    "format-icons": [
-      "",
-      "",
-      ""
-    ]
-  },
   "memory": {
     "tooltip": false,
     "interval": 2,

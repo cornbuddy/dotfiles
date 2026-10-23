@@ -4,3 +4,9 @@
     name: systemd-journald
     state: restarted
   become: true
+
+- name: Restart logind
+  ansible.builtin.service:
+    name: systemd-logind
+    state: restarted
+  become: true

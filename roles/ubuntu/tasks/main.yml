@@ -1,9 +1,15 @@
 ---
-- name: Set lid close behaviour
+- name: Configure logind
   ansible.builtin.lineinfile:
     path: /etc/systemd/logind.conf
-    line: HandleLidSwitch=lock
+    line: "{{ item }}"
   become: true
+  loop:
+    - HandleLidSwitch=lock
+    - HandlePowerKey=suspend
+    - HandlePowerKeyLongPress=poweroff
+  notify:
+    - Restart logind
 
 - name: Set log max size
   ansible.builtin.lineinfile:
