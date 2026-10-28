@@ -4,4 +4,5 @@ with pkgs; [
   dbeaver-bin
   fish
   opencode
+  postgresql
 ]
