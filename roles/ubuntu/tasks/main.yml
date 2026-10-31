@@ -3,13 +3,13 @@
   ansible.builtin.lineinfile:
     path: /etc/systemd/logind.conf
     line: "{{ item }}"
-  become: true
   loop:
     - HandleLidSwitch=lock
     - HandlePowerKey=suspend
     - HandlePowerKeyLongPress=poweroff
   notify:
     - Restart logind
+  become: true
 
 - name: Set log max size
   ansible.builtin.lineinfile:
