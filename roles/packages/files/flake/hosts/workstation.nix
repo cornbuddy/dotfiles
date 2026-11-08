@@ -2,4 +2,5 @@
 with pkgs; [
   fish
   darktable
+  qimgv
 ]
