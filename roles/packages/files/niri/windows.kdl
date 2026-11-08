@@ -44,7 +44,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"darktable"#
+    match app-id=r#"darktable|qimgv"#
     open-maximized true
     open-on-workspace ""
 }
