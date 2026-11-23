@@ -1,6 +1,8 @@
 spawn-at-startup "waybar"
 spawn-at-startup "swaync"
 spawn-at-startup "nm-applet --indicator"
+spawn-at-startup "dbus-update-activation-environment" "--all"
+
 spawn-at-startup "veilad"
 spawn-sh-at-startup "veila idle --lock-after=300 --lock-before-sleep"
 

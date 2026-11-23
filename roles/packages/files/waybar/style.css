@@ -2,12 +2,10 @@
 
 #custom-tray-arrow.inhibited-none,
 #custom-tray-arrow.dnd-none,
-#battery.charging,
-#power-profiles-daemon.power-saver {
+#battery.charging {
   color: #a6e3a1;
 }
 
-#idle_inhibitor.activated,
 #cpu.warning,
 #disk.warning,
 #memory.warning,
@@ -39,8 +37,8 @@ button:hover {
 }
 
 #workspaces {
-  margin: 0.25em 0.3125em;
-  padding: 0.375em 0.375em;
+  margin: 0.1875em 0.25em;
+  padding: 0.25em 0.375em;
   background-color: @surface_container;
   border-radius: 1.25em;
 }
@@ -79,8 +77,6 @@ button:hover {
 }
 
 /* Pill-shaped modules: shared shell */
-#power-profiles-daemon,
-#idle_inhibitor,
 #audio,
 #connections,
 #system,
@@ -90,13 +86,11 @@ button:hover {
 #battery,
 #custom-tomat,
 #tray {
-  margin: 0.25em 0.3125em;
+  margin: 0.1875em 0.25em;
   background-color: @surface_container;
   border-radius: 1.25em;
 }
 
-#power-profiles-daemon,
-#idle_inhibitor,
 #audio,
 #connections,
 #system,
@@ -108,10 +102,8 @@ button:hover {
   color: @secondary_fixed_dim;
 }
 
-#power-profiles-daemon,
-#idle_inhibitor,
 #custom-tomat {
-  padding: 0.375em 0.9375em 0.375em 0.625em;
+  padding: 0.25em 0.9375em 0.25em 0.625em;
 }
 
 #audio,
@@ -119,23 +111,23 @@ button:hover {
 #system,
 #storage,
 #language {
-  padding: 0.375em 0.375em;
+  padding: 0.25em 0.375em;
 }
 
 #battery {
-  padding: 0.375em 1em;
+  padding: 0.25em 1em;
 }
 
 #clock {
-  padding: 0.375em 0.625em 0.375em 1em;
+  padding: 0.25em 0.625em 0.25em 1em;
 }
 
 #tray {
-  padding: 0.375em 0.625em;
+  padding: 0.25em 0.625em;
 }
 
 #custom-tray-arrow {
-  padding: 0.375em 0.875em 0.375em 0.625em;
+  padding: 0.25em 0.875em 0.25em 0.625em;
   color: @primary;
 }
 
@@ -194,7 +186,7 @@ button:hover {
 }
 
 #pulseaudio-slider {
-  margin: 0.25em 0.3125em;
+  margin: 0.1875em 0.25em;
   padding: 0 0.125em;
   background-color: transparent;
   border-radius: 1.25em;

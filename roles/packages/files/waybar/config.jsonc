@@ -1,6 +1,5 @@
 {
   "layer": "top",
-  "height": 42,
   "spacing": 6,
   "include": [
     "./modules/audio.jsonc",
