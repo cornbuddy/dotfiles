@@ -12,7 +12,7 @@
 }
 
 window#waybar {
-  background: rgba(15, 20, 22, 0.5); /* @surface at 50% */
+  background: @background;
   color: @on_background;
   margin-top: 0.75em;
 }
@@ -86,7 +86,7 @@ button:hover {
 }
 
 #workspaces button.special { color: @tertiary_fixed; }
-#workspaces button.urgent { color: @error_container; }
+#workspaces button.urgent { color: @error_state; }
 
 /* ---------- children of the grouped pills ---------- */
 #disk,
@@ -122,7 +122,7 @@ button:hover {
 #custom-tray-arrow.inhibited-none,
 #custom-tray-arrow.dnd-none,
 #battery.charging {
-  color: #a6e3a1;
+  color: @goot_state;
 }
 
 #cpu.warning,
@@ -132,7 +132,7 @@ button:hover {
 #custom-tray-arrow.notification,
 #custom-tray-arrow.dnd-notification,
 #custom-tray-arrow.inhibited-notification {
-  color: #f9e2af;
+  color: @warning_state;
 }
 
 #network.disabled,
@@ -144,7 +144,7 @@ button:hover {
 #power-profiles-daemon.performance,
 #custom-tray-arrow.dnd-inhibited-none,
 #custom-tray-arrow.dnd-inhibited-notification {
-  color: #f38ba8;
+  color: @error_state;
 }
 
 /* ---------- pomodoro ---------- */
