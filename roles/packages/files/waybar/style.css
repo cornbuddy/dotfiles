@@ -1,5 +1,124 @@
 @import "colors.css";
 
+/* ---------- base ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 14px;
+}
+
+window#waybar {
+  background: rgba(15, 20, 22, 0.5); /* @surface at 50% */
+  color: @on_background;
+  margin-top: 0.75em;
+}
+
+/* do nothing on workspace hover */
+button:hover {
+  box-shadow: none; /* Remove predefined box-shadow */
+  text-shadow: none; /* Remove predefined text-shadow */
+  background: none; /* Remove predefined background color (white) */
+  transition: none; /* Disable predefined animations */
+}
+
+/* ---------- pills ---------- */
+/* every filled pill shares one shell, sized in em so the bar scales with the font */
+#workspaces,
+#audio,
+#connections,
+#system,
+#storage,
+#clock,
+#battery,
+#custom-tomat,
+#tray,
+#pulseaudio-slider {
+  margin: 0.1875em 0.25em;
+  padding: 0.25em 0.375em;
+  background-color: @surface_container;
+  border-radius: 1.25em;
+  color: @secondary_fixed_dim;
+}
+
+/* pills whose children carry the color, or that have no text of their own */
+#workspaces,
+#tray,
+#pulseaudio-slider {
+  color: @on_background;
+}
+
+#pulseaudio-slider {
+  padding: 0 0.125em;
+  background-color: transparent;
+}
+
+/* pill-specific side padding */
+#custom-tomat { padding: 0.25em 0.9375em 0.25em 0.625em; }
+#battery { padding: 0.25em 1em; }
+#clock { padding: 0.25em 0.625em 0.25em 1em; }
+#tray { padding: 0.25em 0.625em; }
+
+/* ---------- workspaces ---------- */
+#workspaces button {
+  min-width: 2em;
+  margin: 0 0.125em;
+  padding: 0;
+  background: transparent;
+  border-radius: 1em;
+  color: @tertiary;
+}
+
+/* workaround to hide empty workspaces */
+#workspaces button#niri-workspace-5 {
+  min-width: 0;
+  margin: 0;
+  font-size: 0;
+}
+
+#workspaces button.active {
+  padding: 0 0.75em;
+  background-color: @primary;
+  color: @on_primary;
+}
+
+#workspaces button.special { color: @tertiary_fixed; }
+#workspaces button.urgent { color: @error_container; }
+
+/* ---------- children of the grouped pills ---------- */
+#disk,
+#memory,
+#cpu,
+#temperature,
+#bluetooth {
+  margin-right: 0.125em;
+  padding: 0 0.5em;
+}
+
+#network {
+  padding: 0 0.625em 0 0.25em;
+}
+
+#pulseaudio {
+  margin-right: 0.75em;
+  margin-left: 0.5em;
+}
+
+#custom-tray-arrow {
+  padding: 0.25em 0.875em 0.25em 0.625em;
+  color: @primary;
+}
+
+#tray > .passive,
+#tray > .active,
+#tray > .needs-attention {
+  -gtk-icon-effect: none;
+}
+
+/* ---------- state colors ---------- */
 #custom-tray-arrow.inhibited-none,
 #custom-tray-arrow.dnd-none,
 #battery.charging {
@@ -28,170 +147,15 @@
   color: #f38ba8;
 }
 
-/* do nothing on workspace hover */
-button:hover {
-  box-shadow: none; /* Remove predefined box-shadow */
-  text-shadow: none; /* Remove predefined text-shadow */
-  background: none; /* Remove predefined background color (white) */
-  transition: none; /* Disable predefined animations */
-}
+/* ---------- pomodoro ---------- */
+#custom-tomat.work { background-color: @primary; color: @on_primary; }
+#custom-tomat.work-paused { background-color: @primary_container; color: @on_primary_container; }
+#custom-tomat.break { background-color: @tertiary; color: @on_tertiary; }
+#custom-tomat.break-paused { background-color: @tertiary_container; color: @on_tertiary_container; }
+#custom-tomat.long-break { background-color: @secondary; color: @on_secondary; }
+#custom-tomat.long-break-paused { background-color: @secondary_container; color: @on_secondary_container; }
 
-#workspaces {
-  margin: 0.1875em 0.25em;
-  padding: 0.25em 0.375em;
-  background-color: @surface_container;
-  border-radius: 1.25em;
-}
-
-#workspaces button {
-  min-width: 2em;
-  padding: 0em;
-  margin: 0 0.125em;
-  background: transparent;
-  border-radius: 1em;
-  color: @tertiary;
-}
-
-/* workaround to hide empty workspaces */
-#workspaces button#niri-workspace-5 {
-  background: None;
-  border: None;
-  font-size: 0;
-  padding: 0;
-  margin: 0;
-  min-width: 0;
-}
-
-#workspaces button.active {
-  padding: 0 0.75em;
-  background-color: @primary;
-  color: @on_primary;
-}
-
-#workspaces button.special {
-  color: @tertiary_fixed;
-}
-
-#workspaces button.urgent {
-  color: @error_container;
-}
-
-/* Pill-shaped modules: shared shell */
-#audio,
-#connections,
-#system,
-#storage,
-#language,
-#clock,
-#battery,
-#custom-tomat,
-#tray {
-  margin: 0.1875em 0.25em;
-  background-color: @surface_container;
-  border-radius: 1.25em;
-}
-
-#audio,
-#connections,
-#system,
-#storage,
-#language,
-#clock,
-#battery,
-#custom-tomat {
-  color: @secondary_fixed_dim;
-}
-
-#custom-tomat {
-  padding: 0.25em 0.9375em 0.25em 0.625em;
-}
-
-#audio,
-#connections,
-#system,
-#storage,
-#language {
-  padding: 0.25em 0.375em;
-}
-
-#battery {
-  padding: 0.25em 1em;
-}
-
-#clock {
-  padding: 0.25em 0.625em 0.25em 1em;
-}
-
-#tray {
-  padding: 0.25em 0.625em;
-}
-
-#custom-tray-arrow {
-  padding: 0.25em 0.875em 0.25em 0.625em;
-  color: @primary;
-}
-
-#tray > .passive,
-#tray > .active,
-#tray > .needs-attention {
-  -gtk-icon-effect: none;
-}
-
-#disk,
-#memory,
-#cpu,
-#temperature,
-#bluetooth {
-  margin-right: 0.125em;
-  padding: 0 0.5em;
-}
-
-#network {
-  padding: 0 0.625em 0 0.25em;
-}
-
-#pulseaudio {
-  margin-right: 0.75em;
-  margin-left: 0.5em;
-}
-
-#custom-tomat.work {
-  background-color: @primary;
-  color: @on_primary;
-}
-
-#custom-tomat.work-paused {
-  background-color: @primary_container;
-  color: @on_primary_container;
-}
-
-#custom-tomat.break {
-  background-color: @tertiary;
-  color: @on_tertiary;
-}
-
-#custom-tomat.break-paused {
-  background-color: @tertiary_container;
-  color: @on_tertiary_container;
-}
-
-#custom-tomat.long-break {
-  background-color: @secondary;
-  color: @on_secondary;
-}
-
-#custom-tomat.long-break-paused {
-  background-color: @secondary_container;
-  color: @on_secondary_container;
-}
-
-#pulseaudio-slider {
-  margin: 0.1875em 0.25em;
-  padding: 0 0.125em;
-  background-color: transparent;
-  border-radius: 1.25em;
-}
-
+/* ---------- volume slider ---------- */
 #pulseaudio-slider trough,
 #pulseaudio-slider highlight {
   min-height: 0.625em;
@@ -215,27 +179,8 @@ button:hover {
   background-color: @primary;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  min-height: 0;
-  border: none;
-  border-radius: 0;
-  font-family: "JetBrainsMono Nerd Font";
-  font-size: 14px;
-}
-
-window#waybar {
-  background: rgba(15, 20, 22, 0.5); /* @surface at 50% */
-  color: @on_background;
-  margin-top: 0.75em;
-}
-
+/* ---------- keyboard layout ---------- */
 label#language {
-  background-color: transparent;
-  border-radius: 0;
-  margin: 0;
-  padding: 0;
-  margin-right: 0.5em;
-  margin-left: 0.5em;
+  margin: 0 0.5em;
+  color: @secondary_fixed_dim;
 }
