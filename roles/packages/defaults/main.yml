@@ -10,9 +10,6 @@ packages_nix_daemon: >-
 
 packages_tmux_gitmux_config_path: "{{ packages_xdg_config }}/gitmux/gitmux.yml"
 
-packages_go_install:
-  - github.com/juev/hledger-lsp/cmd/hledger-lsp@latest
-
 packages_fish_bin: "{{ packages_nix_profile_bin }}/fish"
 packages_fish_config_dir: "{{ packages_xdg_config }}/fish"
 packages_fish_go_path: "{{ ansible_env.HOME }}/go"

@@ -9,7 +9,6 @@
   loop:
     - fish
     - git
-    - go
     - fonts
     - nvim
     - tmux
